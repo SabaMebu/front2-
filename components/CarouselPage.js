@@ -54,7 +54,6 @@ function CarouselPage() {
         </Carousel.Item>
       </Carousel>
 
-      {/* Media queries for responsiveness */}
       <style jsx>{`
         @media (max-width: 768px) {
           img {
