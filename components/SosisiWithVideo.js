@@ -107,7 +107,7 @@ const VideoBackground = () => {
 
       {/* Video */}
       <VideoContainer>
-        <Video autoPlay muted loop playsInline>
+        <Video autoPlay muted loop playsInline webkit-playsinline controls>
           <source src="video.mp4" type="video/mp4" />
           <source src="video.webm" type="video/webm" />
           <source src="video.ogv" type="video/ogg" />
