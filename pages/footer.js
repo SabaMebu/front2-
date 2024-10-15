@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Head from "next/head";
 
 // Footer container
 const FooterContainer = styled.footer`
@@ -22,13 +23,13 @@ const FooterContainer = styled.footer`
 
 // Each column in the footer
 const FooterColumn = styled.div`
-  flex: 1 1 250px; /* Grow and shrink to fit */
+  flex: 1 1 250px;
   padding: 0 20px;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
     padding: 10px 0;
-    min-width: 100%; /* Full width on smaller screens */
+    min-width: 100%;
   }
 `;
 
@@ -81,9 +82,9 @@ const NewsletterForm = styled.form`
   flex-direction: column;
   gap: 10px;
   color: #ccc;
-  width: 100%; /* Ensure it takes full width */
-  max-width: 300px; /* Set a maximum width */
-  margin: 0 auto; /* Center the form */
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
 `;
 
 // Input for email
@@ -92,7 +93,7 @@ const EmailInput = styled.input`
   border: none;
   border-radius: 5px;
   font-size: 1em;
-  width: 100%; /* Ensure it takes full width */
+  width: 100%;
   background-color: #333;
   color: white;
 
@@ -145,6 +146,16 @@ const SocialIcon = styled.a`
 export default function Footer() {
   return (
     <>
+      {/* SEO meta tags */}
+      <Head>
+        <title>Footer Section</title>
+        <meta
+          name="description"
+          content="This is the footer section for our website."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
       <FooterContainer>
         {/* First column */}
         <FooterColumn>
@@ -168,7 +179,7 @@ export default function Footer() {
           <NewsletterForm>
             <EmailInput
               type="email"
-              placeholder="Enter email address"
+              placeholder="შეიყვანეთ თქვენი ელფოსტა"
               required
             />
             <SubmitButton type="submit">გამოწერა</SubmitButton>
@@ -176,9 +187,7 @@ export default function Footer() {
         </FooterColumn>
       </FooterContainer>
 
-      <FooterBottom>
-        &copy; ყველა უფლება დაცულია © 2018 შპს "ბრენდ"
-      </FooterBottom>
+      <FooterBottom> ყველა უფლება დაცულია 2018 შპს "ბრენდ"</FooterBottom>
     </>
   );
 }

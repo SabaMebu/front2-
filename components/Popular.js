@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function Popular() {
   return (
     <div
@@ -23,11 +25,14 @@ function Popular() {
       <div
         style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
       >
-        <a
-          href="/products/66d97681ec812e1a9751fda9"
-          style={{ textDecoration: "none" }}
-        >
-          <div style={{ textAlign: "center", margin: "10px 30px" }}>
+        <Link href="/products/66d97681ec812e1a9751fda9" passHref>
+          <div
+            style={{
+              textAlign: "center",
+              margin: "10px 30px",
+              cursor: "pointer",
+            }}
+          >
             <img
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
@@ -40,12 +45,16 @@ function Popular() {
               ძეხვი საქონლის
             </div>
           </div>
-        </a>
-        <a
-          href="/products/66d97798ec812e1a9751fdb9"
-          style={{ textDecoration: "none" }}
-        >
-          <div style={{ textAlign: "center", margin: "10px 30px" }}>
+        </Link>
+
+        <Link href="/products/66d97798ec812e1a9751fdb9" passHref>
+          <div
+            style={{
+              textAlign: "center",
+              margin: "10px 30px",
+              cursor: "pointer",
+            }}
+          >
             <img
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
@@ -58,12 +67,16 @@ function Popular() {
               ძეხვი საექიმო
             </div>
           </div>
-        </a>
-        <a
-          href="/products/66d97704ec812e1a9751fdb1"
-          style={{ textDecoration: "none" }}
-        >
-          <div style={{ textAlign: "center", margin: "10px 30px" }}>
+        </Link>
+
+        <Link href="/products/66d97704ec812e1a9751fdb1" passHref>
+          <div
+            style={{
+              textAlign: "center",
+              margin: "10px 30px",
+              cursor: "pointer",
+            }}
+          >
             <img
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
@@ -76,12 +89,16 @@ function Popular() {
               ძეხვი სამოყვარულო
             </div>
           </div>
-        </a>
-        <a
-          href="/products/66d97315ec812e1a9751fd94"
-          style={{ textDecoration: "none" }}
-        >
-          <div style={{ textAlign: "center", margin: "10px 30px" }}>
+        </Link>
+
+        <Link href="/products/66d97315ec812e1a9751fd94" passHref>
+          <div
+            style={{
+              textAlign: "center",
+              margin: "10px 30px",
+              cursor: "pointer",
+            }}
+          >
             <img
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
@@ -94,7 +111,7 @@ function Popular() {
               ძეხვი პიკანტური
             </div>
           </div>
-        </a>
+        </Link>
       </div>
 
       <style jsx>{`
