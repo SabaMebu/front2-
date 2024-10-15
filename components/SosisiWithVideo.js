@@ -30,8 +30,9 @@ const TitleContent = styled.div`
   margin-top: 9.875rem; /* Adjust margin for larger screens */
 
   @media (max-width: 544px) {
-    margin-top: 5rem; /* Reduced margin for small screens */
+    margin-top: 9rem; /* Reduced margin for small screens */
     flex-direction: column; /* Stack elements vertically */
+    height: 100px;
   }
 `;
 

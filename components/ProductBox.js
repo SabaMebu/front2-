@@ -29,6 +29,10 @@ const WhiteBox = styled.div`
     max-width: 100%; /* Reduce width on smaller screens */
     margin-right: 24px;
   }
+  @media (max-width: 660px) {
+    max-width: 100%; /* Reduce width on smaller screens */
+    margin-left: -70px;
+  }
 
   @media (max-width: 890px) {
     max-width: 100%; /* Reduce width on smaller screens */
@@ -40,6 +44,9 @@ const Description = styled.div`
   margin-top: 8px; /* Space between image and description */
   font-size: 16px; /* Description text size */
   color: #333; /* Text color */
+  @media (max-width: 660px) {
+    margin-left: -70px;
+  }
 `;
 
 export default function ProductBox({ _id, description, images, title }) {
