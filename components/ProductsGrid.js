@@ -20,17 +20,26 @@ const StyledProductsGrid = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, minmax(230px, 1fr));
+    margin-left: 95px;
   }
 
   @media (max-width: 660px) {
-    grid-template-columns: repeat(2, minmax(180px, 1fr));
-    justify-content: center; /* Center the products */
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
   }
 
-  @media (max-width: 409px) {
+  @media (max-width: 584px) {
     grid-template-columns: 2fr;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+
     justify-content: center;
     width: 100%;
+  }
+  @media (max-width: 546px) {
+    grid-template-columns: 2fr;
+    grid-template-columns: repeat(1, minmax(180px, 1fr));
+
+    justify-content: center;
+    width: 150%;
   }
 `;
 
