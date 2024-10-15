@@ -80,7 +80,7 @@ const SubtitleText = styled.span`
   padding: 1.5rem;
 
   @media (max-width: 544px) {
-    font-size: 1.25rem; /* Reduce font size for small screens */
+    font-size: 1rem; /* Reduce font size for small screens */
   }
 `;
 
