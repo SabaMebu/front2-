@@ -71,7 +71,7 @@ const SubtitleIndicator = styled.div`
   margin: 0 auto 1.25rem; /* 20px to rem */
 
   @media (max-width: 544px) {
-    width: 4rem; /* Adjust indicator width for small screens */
+    width: 3rem; /* Adjust indicator width for small screens */
   }
 `;
 
@@ -80,7 +80,7 @@ const SubtitleText = styled.span`
   padding: 1.5rem;
 
   @media (max-width: 548px) {
-    font-size: 1.25rem; /* Reduce font size for small screens */
+    font-size: 1rem; /* Reduce font size for small screens */
   }
 `;
 
