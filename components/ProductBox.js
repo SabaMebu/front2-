@@ -31,12 +31,15 @@ const WhiteBox = styled.div`
   }
   @media (max-width: 660px) {
     max-width: 100%; /* Reduce width on smaller screens */
-    margin-left: -70px;
+    margin-left: -45px;
   }
 
   @media (max-width: 890px) {
     max-width: 100%; /* Reduce width on smaller screens */
     margin-right: 5px;
+  }
+  @media (max-width: 537px) {
+    width: 289px; /* Reduce width on smaller screens */
   }
 `;
 

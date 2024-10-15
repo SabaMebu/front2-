@@ -28,18 +28,19 @@ const StyledProductsGrid = styled.div`
   }
 
   @media (max-width: 584px) {
-    grid-template-columns: 2fr;
     grid-template-columns: repeat(2, minmax(180px, 1fr));
-
     justify-content: center;
     width: 100%;
   }
-  @media (max-width: 546px) {
-    grid-template-columns: 2fr;
-    grid-template-columns: repeat(1, minmax(180px, 1fr));
 
+  /* Adjust size for smaller screens */
+  @media (max-width: 546px) {
+    grid-template-columns: repeat(
+      1,
+      minmax(250px, 1fr)
+    ); /* Increase min size */
     justify-content: center;
-    width: 150%;
+    width: 100%;
   }
 `;
 
