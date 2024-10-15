@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import { useState } from "react";
 import styled from "styled-components";
 import Footer from "./footer";
+import Image from "next/image"; // Importing Next.js Image component
 
 const Container = styled.div`
   display: flex;
@@ -113,12 +114,6 @@ const ContactInfo = styled.div`
     align-items: center;
     gap: 10px;
 
-    img {
-      width: 56px;
-      height: 70px;
-      object-fit: contain; /* სურათის ზომის კონტროლი */
-    }
-
     .contact-details {
       margin-right: 100px;
       display: flex;
@@ -162,9 +157,12 @@ export default function ContactPage() {
       <Container>
         <LeftColumn>
           <ImageWrapper>
-            <img
+            <Image
               src="https://miviuyvan.s3.amazonaws.com/1726661385736.png"
               alt="Contact Page Image"
+              width={750} // You need to specify the width and height for Next.js Image
+              height={500}
+              layout="responsive"
             />
           </ImageWrapper>
           <Title>საკონტაქტო ფორმა</Title>
@@ -218,10 +216,11 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                <Image
                   src="https://miviuyvan.s3.amazonaws.com/1726663189506.png"
                   alt="Facebook"
-                  style={{ width: "55px", height: "55px" }} // გამოსახულების ზომის კონტროლი
+                  width={55}
+                  height={55}
                 />
               </a>
             </div>
@@ -230,9 +229,11 @@ export default function ContactPage() {
 
             <ContactInfo>
               <div className="contact-item">
-                <img
+                <Image
                   src="https://miviuyvan.s3.amazonaws.com/1726662964405.png"
                   alt="Email"
+                  width={56}
+                  height={70}
                 />
                 <div className="contact-details">
                   <h4>ელ ფოსტა</h4>
@@ -240,9 +241,11 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="contact-item">
-                <img
+                <Image
                   src="https://miviuyvan.s3.amazonaws.com/1726663692519.png"
                   alt="Phone"
+                  width={56}
+                  height={70}
                 />
                 <div className="contact-details">
                   <h4>ტელეფონი</h4>
@@ -250,9 +253,11 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="contact-item">
-                <img
+                <Image
                   src="https://miviuyvan.s3.amazonaws.com/1726663766744.png"
                   alt="Address"
+                  width={56}
+                  height={70}
                 />
                 <div className="contact-details">
                   <h4>მისამართი</h4>

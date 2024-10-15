@@ -1,3 +1,5 @@
+import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
+
 function Card() {
   return (
     <div style={{ textAlign: "center", marginTop: "16px" }}>
@@ -26,7 +28,7 @@ function Card() {
           style={{ textDecoration: "none" }}
         >
           <div style={{ textAlign: "center", margin: "10px 30px" }}>
-            <img
+            <IMAGE
               style={{
                 marginBottom: "8px",
                 transition: "transform 0.3s, box-shadow 0.3s",
@@ -45,7 +47,7 @@ function Card() {
           style={{ textDecoration: "none" }}
         >
           <div style={{ textAlign: "center", margin: "55px 52px" }}>
-            <img
+            <IMAGE
               style={{
                 marginBottom: "8px",
                 transition: "transform 0.3s, box-shadow 0.3s",
@@ -61,7 +63,7 @@ function Card() {
         </a>
         <a href="https://example.com/sosis" style={{ textDecoration: "none" }}>
           <div style={{ textAlign: "center", margin: "55px 52px" }}>
-            <img
+            <IMAGE
               style={{
                 marginBottom: "8px",
                 transition: "transform 0.3s, box-shadow 0.3s",
@@ -80,7 +82,7 @@ function Card() {
           style={{ textDecoration: "none" }}
         >
           <div style={{ textAlign: "center", margin: "25px 20px" }}>
-            <img
+            <IMAGE
               style={{
                 marginBottom: "8px",
                 transition: "transform 0.3s, box-shadow 0.3s",

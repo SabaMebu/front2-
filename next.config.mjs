@@ -4,6 +4,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: { domains: ["miviuyvan.s3.amazonaws.com"] },
 };
 
 export default nextConfig;

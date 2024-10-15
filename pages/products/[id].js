@@ -7,13 +7,14 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import styled from "styled-components";
 import React from "react";
+import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
 
 const ColWrapper = styled.div`
   display: grid;
   grid-template-columns: 0.9fr 1.2fr;
   gap: 40px;
   margin-top: 40px;
-  justify-items: center; // ელემენტების ცენტრირება
+  justify-items: center;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -37,7 +38,7 @@ const ImageWrapper = styled.div`
 
   @media (max-width: 1024px) {
     img {
-      max-width: 100%; // ეკრანის დაპატარავებასთან ერთად სურათი პატარავდება
+      max-width: 100%;
     }
   }
 
@@ -51,7 +52,7 @@ const ImageWrapper = styled.div`
 const DescriptionWrapper = styled.div`
   text-align: center;
   max-width: 600px;
-  margin: 0 auto; // ცენტრირებისთვის
+  margin: 0 auto;
 
   @media (max-width: 1024px) {
     max-width: 80%;
@@ -82,7 +83,7 @@ export default function ProductPage({ product }) {
         <ColWrapper>
           <WhiteBox>
             <ImageWrapper>
-              <img
+              <IMAGE
                 src={product.images?.[0]}
                 alt="Product"
                 onMouseOver={(e) =>
@@ -115,7 +116,7 @@ export default function ProductPage({ product }) {
             />
 
             <div style={{ textAlign: "center", marginTop: "10px" }}>
-              <img
+              <IMAGE
                 style={{ maxWidth: "37%", marginTop: "18px" }}
                 src="https://miviuyvan.s3.amazonaws.com/1725523038718.png"
                 alt="Side Image"

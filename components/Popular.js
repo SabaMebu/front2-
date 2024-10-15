@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 function Popular() {
@@ -33,7 +34,7 @@ function Popular() {
               cursor: "pointer",
             }}
           >
-            <img
+            <Image
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
               alt="დელიკატესი"
@@ -55,7 +56,7 @@ function Popular() {
               cursor: "pointer",
             }}
           >
-            <img
+            <Image
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
               alt="მოხარშული"
@@ -77,7 +78,7 @@ function Popular() {
               cursor: "pointer",
             }}
           >
-            <img
+            <Image
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
               alt="სოსისი"
@@ -99,7 +100,7 @@ function Popular() {
               cursor: "pointer",
             }}
           >
-            <img
+            <Image
               style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
               src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
               alt="სერველატი"

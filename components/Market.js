@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function Market() {
   return (
     <div
@@ -43,14 +45,14 @@ function Market() {
           href="https://example.com/delikatesi"
           style={{ textDecoration: "none" }}
         >
-          <img
+          <Image
             style={{
-              width: "220px",
-              height: "150px",
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724931901378.png"
             alt="დელიკატესი"
+            width={220}
+            height={150}
             className="hover-effect"
           />
         </a>
@@ -58,26 +60,26 @@ function Market() {
           href="https://example.com/moxarshuli"
           style={{ textDecoration: "none" }}
         >
-          <img
+          <Image
             style={{
-              width: "220px",
-              height: "150px",
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724931946925.png"
             alt="მოხარშული"
+            width={220}
+            height={150}
             className="hover-effect"
           />
         </a>
         <a href="https://example.com/sosis" style={{ textDecoration: "none" }}>
-          <img
+          <Image
             style={{
-              width: "220px",
-              height: "150px",
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724931978279.png"
             alt="სოსისი"
+            width={220}
+            height={150}
             className="hover-effect"
           />
         </a>
@@ -85,14 +87,14 @@ function Market() {
           href="https://example.com/servelati"
           style={{ textDecoration: "none" }}
         >
-          <img
+          <Image
             style={{
-              width: "220px",
-              height: "150px",
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724932037094.png"
             alt="სერველატი"
+            width={220}
+            height={150}
             className="hover-effect"
           />
         </a>
@@ -100,14 +102,14 @@ function Market() {
           href="https://example.com/some-product"
           style={{ textDecoration: "none" }}
         >
-          <img
+          <Image
             style={{
-              width: "220px",
-              height: "150px",
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724932070330.png"
             alt="სხვა პროდუქტი"
+            width={220}
+            height={150}
             className="hover-effect"
           />
         </a>

@@ -1,5 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
 import { useEffect } from "react";
+import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
 
 function CarouselPage() {
   useEffect(() => {
@@ -16,7 +17,7 @@ function CarouselPage() {
     <div style={{ width: "100vw", overflow: "hidden" }}>
       <Carousel>
         <Carousel.Item>
-          <img
+          <IMAGE
             style={{
               width: "100%", // Ensure full width of the viewport
               height: "auto", // Let height adjust automatically to maintain aspect ratio
@@ -28,7 +29,7 @@ function CarouselPage() {
           />
         </Carousel.Item>
         <Carousel.Item>
-          <img
+          <IMAGE
             style={{
               width: "100%",
               height: "auto",
@@ -40,7 +41,7 @@ function CarouselPage() {
           />
         </Carousel.Item>
         <Carousel.Item>
-          <img
+          <IMAGE
             style={{
               width: "100%",
               height: "auto",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { useState } from "react";
 import Center from "./Center";
+import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
 
 const StyledHeader = styled.header`
   background-color: white;
@@ -102,7 +103,7 @@ export default function Header() {
         <Center>
           <Wrapper>
             <Logo href={"/"}>
-              <img
+              <IMAGE
                 src="https://miviuyvan.s3.amazonaws.com/1723796900551.jpeg"
                 alt="logo"
                 width={120}
