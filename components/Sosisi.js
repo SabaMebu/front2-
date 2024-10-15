@@ -32,7 +32,7 @@ function Sosisi() {
         style={{
           marginTop: "2.5rem", // 40px to rem
           width: "100vw",
-          height: "calc(90vh - 11.25rem)", // Converted 180px to rem
+          height: "200px", // Converted 180px to rem
           backgroundImage:
             "url('https://miviuyvan.s3.amazonaws.com/1724926731122.jpg')",
           backgroundSize: "contain", // Maintain image aspect ratio
