@@ -7,7 +7,7 @@ import Image from "next/image"; // Importing Next.js Image component
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  gap: 58px; /* სივრცე ფოტოსა და ინფორმაციას შორის */
+  gap: 58px; /* Space between photo and information */
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -25,14 +25,14 @@ const LeftColumn = styled.div`
 `;
 
 const RightColumn = styled.div`
-  flex: 0.3; /* შემცირებულია მარჯვენა ბლოკის სიგანე */
+  flex: 0.3; /* Reduced width for right column */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 25px;
   border: 1px solid #ccc;
   border-radius: 15px;
-  max-width: 350px; /* სიგანის ლიმიტი */
+  max-width: 350px; /* Width limit */
 
   @media (max-width: 768px) {
     max-width: 100%; /* Take full width on small screens */
@@ -45,7 +45,7 @@ const ImageWrapper = styled.div`
   img {
     width: 100%;
     border-radius: 8px;
-    object-fit: cover; /* სურათის ზომის კონტროლი */
+    object-fit: cover; /* Control image size */
   }
 `;
 
@@ -160,7 +160,7 @@ export default function ContactPage() {
             <Image
               src="https://miviuyvan.s3.amazonaws.com/1726661385736.png"
               alt="Contact Page Image"
-              width={750} // You need to specify the width and height for Next.js Image
+              width={750}
               height={500}
               layout="responsive"
             />

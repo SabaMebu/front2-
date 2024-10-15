@@ -187,7 +187,7 @@ export default function Footer() {
         </FooterColumn>
       </FooterContainer>
 
-      <FooterBottom> ყველა უფლება დაცულია 2018 შპს "ბრენდ"</FooterBottom>
+      <FooterBottom>ყველა უფლება დაცულია 2018 შპს ბრენდ</FooterBottom>
     </>
   );
 }
