@@ -27,12 +27,10 @@ const TitleContent = styled.div`
   background-color: rgba(0, 0, 0, 0.5); /* Background with transparency */
   width: fit-content;
   margin: 0 auto;
-  margin-top: 9.875rem; /* Adjust margin for larger screens */
-
-  @media (max-width: 552px) {
-    margin-top: 5.5rem; /* Reduced margin for small screens */
-    flex-direction: column; /* Stack elements vertically */
-  }
+  margin-top: ${(props) =>
+    props.isSmallScreen
+      ? "5rem"
+      : "9.875rem"}; /* Adjust margin for smaller screens */
 `;
 
 const VideoContainer = styled.div`
@@ -58,10 +56,6 @@ const SubtitleWrapper = styled.div`
   transform: translate(-50%, -50%);
   color: #fff;
   text-align: center;
-
-  @media (max-width: 552px) {
-    padding: 0 1rem; /* Padding adjustments for smaller screens */
-  }
 `;
 
 const SubtitleIndicator = styled.div`
@@ -69,19 +63,11 @@ const SubtitleIndicator = styled.div`
   height: 0.25rem; /* 4px to rem */
   background-color: #ff6347;
   margin: 0 auto 1.25rem; /* 20px to rem */
-
-  @media (max-width: 544px) {
-    width: 3rem; /* Adjust indicator width for small screens */
-  }
 `;
 
 const SubtitleText = styled.span`
   font-size: 1.875rem;
   padding: 1.5rem;
-
-  @media (max-width: 548px) {
-    font-size: 1rem; /* Reduce font size for small screens */
-  }
 `;
 
 const VideoBackground = () => {
@@ -121,7 +107,7 @@ const VideoBackground = () => {
 
       {/* Video */}
       <VideoContainer>
-        <Video autoPlay muted loop>
+        <Video autoPlay muted loop playsInline>
           <source src="video.mp4" type="video/mp4" />
           <source src="video.webm" type="video/webm" />
           <source src="video.ogv" type="video/ogg" />
