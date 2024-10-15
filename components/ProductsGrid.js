@@ -32,6 +32,12 @@ const StyledProductsGrid = styled.div`
     justify-content: center;
     width: 100%;
   }
+  @media (max-width: 399px) {
+    margin-right: -50px;
+  }
+  @media (max-width: 375px) {
+    margin-right: -90px;
+  }
 
   /* Adjust size for smaller screens */
   @media (max-width: 546px) {
