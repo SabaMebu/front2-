@@ -22,7 +22,7 @@ const StyledProductsGrid = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, minmax(230px, 1fr));
-    margin-left: 95px;
+    margin-left: -35px;
   }
 
   @media (max-width: 660px) {
@@ -32,7 +32,7 @@ const StyledProductsGrid = styled.div`
   @media (max-width: 584px) {
     grid-template-columns: repeat(2, minmax(180px, 1fr));
     justify-content: center;
-    width: 100%;
+    width: 120%;
   }
 
   @media (max-width: 546px) {
