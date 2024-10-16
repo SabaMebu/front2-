@@ -32,10 +32,16 @@ const StyledProductsGrid = styled.div`
   /* Adjust for screens smaller than 600px */
   @media (max-width: 600px) {
     grid-template-columns: repeat(2, minmax(180px, 1fr));
-    gap: 40px; /* Reduce the gap between grid items */
+    gap: 15px; /* Reduce the gap between grid items */
   }
 
-  /* Adjust for screens smaller than 396px */
+  /* Adjust for screens smaller than 400px */
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+    gap: 10px; /* Smaller gap for small screens */
+    width: 100%; /* Ensure the grid takes up the full width */
+    justify-content: center; /* Center the grid items */
+  }
 `;
 
 export default function ProductsGrid({ products }) {
