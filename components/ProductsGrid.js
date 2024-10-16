@@ -36,14 +36,14 @@ const StyledProductsGrid = styled.div`
   }
 
   /* Adjust for screens smaller than 398px */
-  @media (max-width: 388px) {
+  @media (max-width: 398px) {
     grid-template-columns: 1fr; /* Single column layout */
     gap: 20px; /* Keep some space between the items */
-    margin-left: 105px;
+    margin-left: -70px;
 
     img {
-      max-width: 200%; /* Increase image size */
-      max-height: 400px; /* Larger image height for small screens */
+      max-width: 150%; /* Increase image size */
+      max-height: 300px; /* Larger image height for small screens */
       object-fit: contain; /* Ensure the image maintains aspect ratio */
     }
 
