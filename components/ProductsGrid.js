@@ -49,6 +49,18 @@ const StyledProductsGrid = styled.div`
 
     justify-content: center; /* Center the single column layout */
   }
+  @media (max-width: 653px) {
+    grid-template-columns: 1fr; /* Single column layout */
+
+    margin-left: -80px;
+
+    img {
+      max-width: 150%; /* Increase image size */
+      max-height: 200px; /* Larger image height for small screens */
+    }
+
+    justify-content: center; /* Center the single column layout */
+  }
 `;
 
 export default function ProductsGrid({ products }) {
