@@ -36,27 +36,15 @@ const StyledProductsGrid = styled.div`
   }
 
   /* Adjust for screens smaller than 398px */
-  @media (max-width: 398px) {
+  @media (max-width: 388px) {
     grid-template-columns: 1fr; /* Single column layout */
     gap: 20px; /* Keep some space between the items */
-    margin-left: -70px;
+    margin-left: px;
 
     img {
-      max-width: 150%; /* Increase image size */
-      max-height: 300px; /* Larger image height for small screens */
+      max-width: 200%; /* Increase image size */
+      max-height: 400px; /* Larger image height for small screens */
       object-fit: contain; /* Ensure the image maintains aspect ratio */
-    }
-
-    justify-content: center; /* Center the single column layout */
-  }
-  @media (max-width: 653px) {
-    grid-template-columns: 1fr; /* Single column layout */
-
-    margin-left: -80px;
-
-    img {
-      max-width: 150%; /* Increase image size */
-      max-height: 200px; /* Larger image height for small screens */
     }
 
     justify-content: center; /* Center the single column layout */
