@@ -10,8 +10,10 @@ const StyledProductsGrid = styled.div`
   grid-template-columns: repeat(4, minmax(200px, 1fr));
 
   img {
-    width: 100%; /* Ensure images take up the full width of the grid item */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Keep aspect ratio */
+    max-height: 150px; /* Set a maximum height */
   }
 
   @media (max-width: 1200px) {
@@ -36,20 +38,13 @@ const StyledProductsGrid = styled.div`
   @media (max-width: 546px) {
     grid-template-columns: repeat(1, minmax(145px, 1fr));
     justify-content: center;
-    width: 160%;
-  }
+    width: 100%;
 
-  @media (max-width: 450px) {
-    grid-template-columns: repeat(1, minmax(145px, 1fr));
-    justify-content: center;
-    width: 160%;
-    margin-right: -40px;
-  }
-  @media (max-width: 397px) {
-    grid-template-columns: repeat(1, minmax(145px, 1fr));
-    justify-content: center;
-    width: 160%;
-    margin-left: 65px;
+    img {
+      max-width: 100%;
+      max-height: 200px; /* Set a maximum height for smaller screens */
+      object-fit: contain; /* Ensure the image doesn't stretch */
+    }
   }
 `;
 
