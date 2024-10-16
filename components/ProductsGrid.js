@@ -32,21 +32,24 @@ const StyledProductsGrid = styled.div`
     justify-content: center;
     width: 100%;
   }
-  @media (max-width: 399px) {
-    margin-right: -50px;
-  }
-  @media (max-width: 375px) {
-    margin-right: -90px;
+
+  @media (max-width: 546px) {
+    grid-template-columns: repeat(1, minmax(145px, 1fr));
+    justify-content: center;
+    width: 160%;
   }
 
-  /* Adjust size for smaller screens */
-  @media (max-width: 546px) {
-    grid-template-columns: repeat(
-      1,
-      minmax(250px, 1fr)
-    ); /* Increase min size */
+  @media (max-width: 450px) {
+    grid-template-columns: repeat(1, minmax(145px, 1fr));
     justify-content: center;
-    width: 100%;
+    width: 160%;
+    margin-right: -40px;
+  }
+  @media (max-width: 397px) {
+    grid-template-columns: repeat(1, minmax(145px, 1fr));
+    justify-content: center;
+    width: 160%;
+    margin-left: 65px;
   }
 `;
 
