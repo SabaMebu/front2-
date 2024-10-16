@@ -10,19 +10,15 @@ import Link from "next/link";
 const Title = styled.h1`
   font-size: 2em;
   margin: 0;
-  color: white; /* Optional: Set title text color to white for contrast */
+  color: white;
 `;
 
 const TitleWrapper = styled.div`
-  background-color: #a22a22; /* Red background */
-  padding: 35px 0 20px;
+  background-color: #a22a22;
+  padding: 35px 0;
   text-align: center;
-  width: 100vw; /* Takes up full width of the viewport */
+  width: 100%;
   margin-bottom: 20px;
-  padding-right: 50px; /* Adds space on the right side */
-  position: relative;
-  left: 40%;
-  transform: translateX(-50%); /* Centers the wrapper */
 `;
 
 const PaginationWrapper = styled.div`
@@ -37,28 +33,27 @@ const PaginationButton = styled.div`
   background-color: ${({ isActive }) => (isActive ? "#8b1f1f" : "#a22a22")};
   color: white;
   cursor: pointer;
-  text-decoration: none;
+
   &:hover {
     background-color: #8b1f1f;
   }
 `;
 
-// Modify the ProductsGrid component to be responsive
 const ResponsiveProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Default: 4 products per row */
   gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
-  @media (max-width: 910px) {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    ); /* 3 products per row for screens 910px and below */
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
   }
 `;
 
 export default function ProductsPage({ products, currentPage, totalPages }) {
-  // Generate an array of page numbers
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
@@ -68,12 +63,9 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
         <TitleWrapper>
           <Title>ყველა პროდუქტი</Title>
         </TitleWrapper>
-
         <ResponsiveProductsGrid>
           <ProductsGrid products={products} />
         </ResponsiveProductsGrid>
-
-        {/* Numbered Pagination */}
         <PaginationWrapper>
           {pageNumbers.map((pageNum) => (
             <Link href={`?page=${pageNum}`} passHref key={pageNum}>
@@ -91,20 +83,10 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
 
 export async function getServerSideProps(context) {
   await mongooseConnect();
-
-  // Get the current page from query params, default to 1 if not provided
   const page = parseInt(context.query.page) || 1;
-  const limit = 10; // Number of products per page
+  const limit = 10;
   const skip = (page - 1) * limit;
-
-  // Fetch products with pagination
-  const products = await Product.find({}, null, {
-    sort: { _id: -1 },
-    skip: skip,
-    limit: limit,
-  });
-
-  // Fetch total number of products
+  const products = await Product.find({}, null, { skip, limit });
   const totalProducts = await Product.countDocuments();
   const totalPages = Math.ceil(totalProducts / limit);
 
@@ -112,7 +94,7 @@ export async function getServerSideProps(context) {
     props: {
       products: JSON.parse(JSON.stringify(products)),
       currentPage: page,
-      totalPages: totalPages,
+      totalPages,
     },
   };
 }

@@ -1,28 +1,28 @@
-import Center from "@/components/Center";
+import styled from "styled-components";
 import Header from "@/components/Header";
+import Center from "@/components/Center";
 import ProductBox from "@/components/ProductBox";
 import { Category } from "@/models/Category";
-import { Product } from "@/models/Product";
+import { Product } from "@/models/Product"; // Ensure this import exists
 import Link from "next/link";
-import styled from "styled-components";
 import Footer from "./footer";
 
 const Container = styled.div`
-  overflow: hidden; /* This will prevent horizontal scrolling */
+  overflow: hidden;
 `;
 
 const CategoryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin: 11 16px; /* Normalize margin across width */
+  margin: 11px 16px;
 
   @media (max-width: 812px) {
-    grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 580px) {
-    grid-template-columns: 1fr; /* 1 product per row on very small screens */
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -69,28 +69,20 @@ const ShowAllLink = styled(Link)`
 `;
 
 const TitleWrapper = styled.div`
-  background-color: #f5f5f5; /* Gray background */
-  padding: 27px 0; /* Top and bottom padding */
-  text-align: center; /* Center text */
-  width: 100vw; /* Stretch background to full viewport width */
-  position: relative; /* Positioning control */
-  left: 50%; /* Compensate for left shift */
-  transform: translateX(-50%); /* Compensate for left shift */
-  margin: 18px 0 20px; /* Top and bottom margins */
-  background-color: #a22a22;
+  background-color: #a22a22; /* Change color as needed */
+  padding: 27px 0;
+  text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 18px 0 20px;
 `;
 
 const Title = styled.h1`
   font-size: 2em;
   color: white;
   margin: 0;
-`;
-
-const ProductImage = styled.img`
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Fit image to container size */
-  border-radius: 10px; /* Add rounded corners around the image */
 `;
 
 export default function CategoriesPage({ mainCategories, categoriesProducts }) {
@@ -106,7 +98,7 @@ export default function CategoriesPage({ mainCategories, categoriesProducts }) {
           <CategoryWrapper key={cat._id}>
             <CategoryTitle>
               <span>{cat.name}</span>
-              <ShowAllLink href={"/category/" + cat._id}>Show all</ShowAllLink>
+              <ShowAllLink href={`/category/${cat._id}`}>Show all</ShowAllLink>
             </CategoryTitle>
 
             <CategoryGrid>
@@ -126,18 +118,22 @@ export async function getServerSideProps() {
   const categories = await Category.find({ parent: null });
   const mainCategories = categories.filter((c) => !c.parent);
   const categoriesProducts = {};
+
   for (const mainCat of mainCategories) {
     const mainCatId = mainCat._id.toString();
     const childCatIds = categories
       .filter((c) => c?.parent?.toString() === mainCatId)
       .map((c) => c._id.toString());
     const categoriesIds = [mainCatId, ...childCatIds];
+
     const products = await Product.find({ category: categoriesIds }, null, {
-      limit: 4, // Changed from 3 to 4
+      limit: 4,
       sort: { _id: -1 },
     });
+
     categoriesProducts[mainCat._id] = products;
   }
+
   return {
     props: {
       mainCategories: JSON.parse(JSON.stringify(mainCategories)),
