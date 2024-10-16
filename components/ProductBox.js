@@ -45,6 +45,14 @@ const WhiteBox = styled.div`
     width: 250px; /* Reduce width on smaller screens */
     margin-left: -90px;
   }
+  @media (max-width: 391px) {
+    width: 250px; /* Reduce width on smaller screens */
+    margin-right: 1px;
+  }
+  @media (max-width: 362px) {
+    width: 250px; /* Reduce width on smaller screens */
+    margin-left: 2px;
+  }
 `;
 
 const Description = styled.div`
