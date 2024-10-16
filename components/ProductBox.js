@@ -9,64 +9,59 @@ const ProductWrapper = styled.div`
 `;
 
 const WhiteBox = styled.div`
-  background-color: white; /* White background */
+  background-color: white;
   padding: 20px;
-  border-radius: 8px; /* Slightly rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
-  border: 1px solid #ddd; /* Thin border */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center all content */
+  align-items: center;
+  justify-content: center; /* Center content within the box */
 
   /* Adjust the image styles */
   img {
-    max-width: 150%;
+    max-width: 100%;
     max-height: 150px;
-    border-radius: 4px; /* Slightly rounded corners for the image */
+    border-radius: 4px;
   }
 
   @media (max-width: 900px) {
-    max-width: 100%; /* Reduce width on smaller screens */
-    margin-right: 24px;
-  }
-  @media (max-width: 660px) {
-    max-width: 100%; /* Reduce width on smaller screens */
-    margin-left: -45px;
+    max-width: 100%;
   }
 
-  @media (max-width: 890px) {
-    max-width: 100%; /* Reduce width on smaller screens */
-    margin-right: 5px;
+  @media (max-width: 660px) {
+    max-width: 100%;
   }
+
   @media (max-width: 537px) {
-    width: 289px; /* Reduce width on smaller screens */
+    width: 100%;
+    margin: 0 auto; /* Center horizontally */
   }
+
   @media (max-width: 370px) {
-    width: 250px; /* Reduce width on smaller screens */
-    margin-left: -90px;
+    width: 100%;
+    margin: 0 auto;
   }
+
   @media (max-width: 391px) {
-    width: 250px; /* Reduce width on smaller screens */
-    margin-right: 1px;
-  }
-  @media (max-width: 362px) {
-    width: 250px; /* Reduce width on smaller screens */
-    margin-left: 2px;
+    width: 100%;
+    margin: 0 auto;
   }
 `;
 
 const Description = styled.div`
-  margin-top: 8px; /* Space between image and description */
-  font-size: 16px; /* Description text size */
-  color: #333; /* Text color */
+  margin-top: 8px;
+  font-size: 16px;
+  color: #333;
+  text-align: center; /* Center the text */
+
   @media (max-width: 660px) {
-    margin-left: -70px;
+    text-align: center;
   }
+
   @media (max-width: 370px) {
-    margin-right: 100px;
-  }
-  @media (max-width: 399px) {
-    margin-right: 20px;
+    text-align: center;
   }
 `;
 
@@ -77,13 +72,12 @@ export default function ProductBox({ _id, description, images, title }) {
     <ProductWrapper>
       <Link href={url} passHref>
         <WhiteBox>
-          {/* Use the Image component instead of img */}
           <Image
             src={images[0]}
             alt={title}
-            width={150} // Set the width
-            height={150} // Set the height
-            style={{ borderRadius: "4px" }} // Set rounded corners for the image
+            width={150}
+            height={150}
+            style={{ borderRadius: "4px" }}
           />
         </WhiteBox>
       </Link>
