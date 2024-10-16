@@ -6,10 +6,11 @@ const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center; /* Center all content */
+  margin-bottom: 20px; /* Add space below each product */
 `;
 
 const WhiteBox = styled.div`
-  background-color: white; /* White background */
+  background-color: white;
   padding: 20px;
   border-radius: 8px; /* Slightly rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
@@ -18,32 +19,15 @@ const WhiteBox = styled.div`
   flex-direction: column;
   align-items: center; /* Center all content */
 
-  /* Adjust the image styles */
   img {
-    max-width: 150%;
+    max-width: 100%; /* Ensure the image scales properly */
     max-height: 150px;
-    border-radius: 4px; /* Slightly rounded corners for the image */
+    border-radius: 4px; /* Rounded corners for the image */
+    object-fit: contain; /* Keep aspect ratio */
   }
 
-  @media (max-width: 900px) {
-    max-width: 100%; /* Reduce width on smaller screens */
-    margin-right: 24px;
-  }
-  @media (max-width: 660px) {
-    max-width: 100%; /* Reduce width on smaller screens */
-    margin-left: -45px;
-  }
-
-  @media (max-width: 890px) {
-    max-width: 100%; /* Reduce width on smaller screens */
-    margin-right: 5px;
-  }
-  @media (max-width: 537px) {
-    width: 289px; /* Reduce width on smaller screens */
-  }
-  @media (max-width: 370px) {
-    width: 250px; /* Reduce width on smaller screens */
-    margin-left: -90px;
+  @media (max-width: 600px) {
+    padding: 15px; /* Reduce padding on smaller screens */
   }
 `;
 
@@ -51,15 +35,7 @@ const Description = styled.div`
   margin-top: 8px; /* Space between image and description */
   font-size: 16px; /* Description text size */
   color: #333; /* Text color */
-  @media (max-width: 660px) {
-    margin-left: -70px;
-  }
-  @media (max-width: 370px) {
-    margin-right: 100px;
-  }
-  @media (max-width: 399px) {
-    margin-right: 20px;
-  }
+  text-align: center; /* Center the text */
 `;
 
 export default function ProductBox({ _id, description, images, title }) {
