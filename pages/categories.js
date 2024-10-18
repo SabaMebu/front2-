@@ -3,26 +3,32 @@ import Header from "@/components/Header";
 import Center from "@/components/Center";
 import ProductBox from "@/components/ProductBox";
 import { Category } from "@/models/Category";
-import { Product } from "@/models/Product"; // Ensure this import exists
+import { Product } from "@/models/Product";
 import Link from "next/link";
 import Footer from "./footer";
 
 const Container = styled.div`
   overflow: hidden;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
 `;
 
 const CategoryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 11px 16px;
+  gap: 20px;
 
-  @media (max-width: 812px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 773px) {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 16px;
   }
 
   @media (max-width: 580px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column */
+    gap: 12px;
   }
 `;
 
@@ -30,14 +36,19 @@ const CategoryTitle = styled.h2`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 0;
-  padding: 0 20px;
+  margin: 20px 0;
+  padding: 10px 20px;
   font-size: 1.5em;
   background-color: #f5f5f5;
   border-bottom: 2px solid #ddd;
-  width: 100%;
   box-sizing: border-box;
+
+  @media (max-width: 580px) {
+    font-size: 1.3em;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 `;
 
 const CategoryWrapper = styled.div`
@@ -50,7 +61,7 @@ const ShowAllLink = styled(Link)`
   color: #a22a22;
   font-size: 16px;
   text-decoration: none;
-  margin: 20px 0;
+  margin-top: 10px;
   padding: 10px 15px;
   border-radius: 5px;
   border: 1px solid #a22a22;
@@ -61,21 +72,16 @@ const ShowAllLink = styled(Link)`
     color: white;
   }
 
-  &::after {
-    content: "→";
-    margin-left: 8px;
-    font-size: 1.2em;
+  @media (max-width: 580px) {
+    align-self: flex-start;
   }
 `;
 
 const TitleWrapper = styled.div`
-  background-color: #a22a22; /* Change color as needed */
+  background-color: #a22a22;
   padding: 27px 0;
   text-align: center;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
   margin: 18px 0 20px;
 `;
 
@@ -83,6 +89,14 @@ const Title = styled.h1`
   font-size: 2em;
   color: white;
   margin: 0;
+
+  @media (max-width: 580px) {
+    font-size: 1.8em;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 1.5em;
+  }
 `;
 
 export default function CategoriesPage({ mainCategories, categoriesProducts }) {
