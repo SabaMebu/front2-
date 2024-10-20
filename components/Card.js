@@ -23,79 +23,65 @@ function Card() {
       <div
         style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
       >
-        <a
-          href="https://example.com/delikatesi"
-          style={{ textDecoration: "none" }}
-        >
-          <div style={{ textAlign: "center", margin: "10px 30px" }}>
-            <IMAGE
-              style={{
-                marginBottom: "8px",
-                transition: "transform 0.3s, box-shadow 0.3s",
-              }}
-              src="https://miviuyvan.s3.amazonaws.com/1724764188618.png"
-              alt="დელიკატესი"
-              width={200}
-              height={150}
-              className="hover-effect"
-            />
-            <div className="title">დელიკატესი</div>
-          </div>
-        </a>
-        <a
-          href="https://example.com/moxarshuli"
-          style={{ textDecoration: "none" }}
-        >
-          <div style={{ textAlign: "center", margin: "55px 52px" }}>
-            <IMAGE
-              style={{
-                marginBottom: "8px",
-                transition: "transform 0.3s, box-shadow 0.3s",
-              }}
-              src="https://miviuyvan.s3.amazonaws.com/1724764412523.png"
-              alt="მოხარშული"
-              width={300}
-              height={200}
-              className="hover-effect"
-            />
-            <div className="title">მოხარშული</div>
-          </div>
-        </a>
-        <a href="https://example.com/sosis" style={{ textDecoration: "none" }}>
-          <div style={{ textAlign: "center", margin: "55px 52px" }}>
-            <IMAGE
-              style={{
-                marginBottom: "8px",
-                transition: "transform 0.3s, box-shadow 0.3s",
-              }}
-              src="https://miviuyvan.s3.amazonaws.com/1723975157781.png"
-              alt="სოსისი"
-              width={300}
-              height={200}
-              className="hover-effect"
-            />
-            <div className="title">სოსისი</div>
-          </div>
-        </a>
-        <a
-          href="https://example.com/servelati"
-          style={{ textDecoration: "none" }}
-        >
-          <div style={{ textAlign: "center", margin: "25px 20px" }}>
-            <IMAGE
-              style={{
-                marginBottom: "8px",
-                transition: "transform 0.3s, box-shadow 0.3s",
-              }}
-              src="https://miviuyvan.s3.amazonaws.com/1724763820395.png"
-              alt="სერველატი"
-              width={220}
-              height={160}
-              className="hover-effect"
-            />
-            <div className="title">სერველატი</div>
-          </div>
-        </a>
+        <div style={{ textAlign: "center", margin: "10px 30px" }}>
+          <IMAGE
+            style={{
+              marginBottom: "8px",
+              transition: "transform 0.3s, box-shadow 0.3s",
+            }}
+            src="https://miviuyvan.s3.amazonaws.com/1724764188618.png"
+            alt="დელიკატესი"
+            width={200}
+            height={150}
+            className="hover-effect"
+          />
+          <div className="title">დელიკატესი</div>
+        </div>
+
+        <div style={{ textAlign: "center", margin: "55px 52px" }}>
+          <IMAGE
+            style={{
+              marginBottom: "8px",
+              transition: "transform 0.3s, box-shadow 0.3s",
+            }}
+            src="https://miviuyvan.s3.amazonaws.com/1724764412523.png"
+            alt="მოხარშული"
+            width={300}
+            height={200}
+            className="hover-effect"
+          />
+          <div className="title">მოხარშული</div>
+        </div>
+
+        <div style={{ textAlign: "center", margin: "55px 52px" }}>
+          <IMAGE
+            style={{
+              marginBottom: "8px",
+              transition: "transform 0.3s, box-shadow 0.3s",
+            }}
+            src="https://miviuyvan.s3.amazonaws.com/1723975157781.png"
+            alt="სოსისი"
+            width={300}
+            height={200}
+            className="hover-effect"
+          />
+          <div className="title">სოსისი</div>
+        </div>
+
+        <div style={{ textAlign: "center", margin: "25px 20px" }}>
+          <IMAGE
+            style={{
+              marginBottom: "8px",
+              transition: "transform 0.3s, box-shadow 0.3s",
+            }}
+            src="https://miviuyvan.s3.amazonaws.com/1724763820395.png"
+            alt="სერველატი"
+            width={220}
+            height={160}
+            className="hover-effect"
+          />
+          <div className="title">სერველატი</div>
+        </div>
       </div>
 
       <style jsx>{`
@@ -116,17 +102,17 @@ function Card() {
         }
 
         .hover-effect:hover {
-          animation: shake 0.5s ease-in-out; /* სურათის რხევა ჰოვერისას */
+          animation: shake 0.2s ease-in-out; /* Image shakes on hover */
         }
 
         .title {
-          color: #a9a9a9; /* Default light gray color */
-          font-size: 18px;
+          color: #black; /* Default light gray color */
+          font-size: 22px;
           transition: color 0.3s; /* Smooth color transition */
         }
 
         .title:hover {
-          color: #000000; /* Change to black on hover */
+          color: #white; /* Change to black on hover */
         }
       `}</style>
     </div>

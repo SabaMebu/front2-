@@ -41,10 +41,7 @@ function Market() {
           marginTop: "30px", // Space between the text and grid
         }}
       >
-        <a
-          href="https://example.com/delikatesi"
-          style={{ textDecoration: "none" }}
-        >
+        <div style={{ textAlign: "center", margin: "10px 30px" }}>
           <Image
             style={{
               transition: "transform 0.3s, box-shadow 0.3s",
@@ -55,11 +52,8 @@ function Market() {
             height={150}
             className="hover-effect"
           />
-        </a>
-        <a
-          href="https://example.com/moxarshuli"
-          style={{ textDecoration: "none" }}
-        >
+        </div>
+        <div style={{ textAlign: "center", margin: "10px 30px" }}>
           <Image
             style={{
               transition: "transform 0.3s, box-shadow 0.3s",
@@ -70,8 +64,8 @@ function Market() {
             height={150}
             className="hover-effect"
           />
-        </a>
-        <a href="https://example.com/sosis" style={{ textDecoration: "none" }}>
+        </div>
+        <div style={{ textAlign: "center", margin: "10px 30px" }}>
           <Image
             style={{
               transition: "transform 0.3s, box-shadow 0.3s",
@@ -82,11 +76,8 @@ function Market() {
             height={150}
             className="hover-effect"
           />
-        </a>
-        <a
-          href="https://example.com/servelati"
-          style={{ textDecoration: "none" }}
-        >
+        </div>
+        <div style={{ textAlign: "center", margin: "10px 30px" }}>
           <Image
             style={{
               transition: "transform 0.3s, box-shadow 0.3s",
@@ -97,11 +88,8 @@ function Market() {
             height={150}
             className="hover-effect"
           />
-        </a>
-        <a
-          href="https://example.com/some-product"
-          style={{ textDecoration: "none" }}
-        >
+        </div>
+        <div style={{ textAlign: "center", margin: "10px 30px" }}>
           <Image
             style={{
               transition: "transform 0.3s, box-shadow 0.3s",
@@ -112,7 +100,7 @@ function Market() {
             height={150}
             className="hover-effect"
           />
-        </a>
+        </div>
       </div>
 
       <style jsx>{`

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 function Popular() {
   return (
@@ -19,106 +18,61 @@ function Popular() {
           width: "100px",
           height: "4px",
           backgroundColor: "#FF6347", // Same color as the text
-          margin: "40px auto 40px", // Adjust spacing above and below the line
+          margin: "40px auto", // Adjust spacing above and below the line
         }}
       ></div>
 
       <div
         style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
       >
-        <Link href="/products/66d97681ec812e1a9751fda9" passHref>
+        {/* Each product item */}
+        {[
+          {
+            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            alt: "დელიკატესი",
+            title: "ძეხვი საქონლის",
+          },
+          {
+            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            alt: "მოხარშული",
+            title: "ძეხვი საექიმო",
+          },
+          {
+            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            alt: "სოსისი",
+            title: "ძეხვი სამოყვარულო",
+          },
+          {
+            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            alt: "სერველატი",
+            title: "ძეხვი პიკანტური",
+          },
+        ].map((item, index) => (
           <div
+            key={index}
             style={{
               textAlign: "center",
               margin: "10px 30px",
               cursor: "pointer",
+              position: "relative", // For positioning the hover effect
             }}
           >
-            <Image
-              style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
-              src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
-              alt="დელიკატესი"
-              width={250}
-              height={250}
-              className="hover-effect"
-            />
-            <div style={{ color: "black", fontSize: "18px" }}>
-              ძეხვი საქონლის
+            <div className="hover-effect" style={{ display: "inline-block" }}>
+              <Image src={item.src} alt={item.alt} width={250} height={250} />
             </div>
+            <div style={{ color: "black", fontSize: "18px" }}>{item.title}</div>
           </div>
-        </Link>
-
-        <Link href="/products/66d97798ec812e1a9751fdb9" passHref>
-          <div
-            style={{
-              textAlign: "center",
-              margin: "10px 30px",
-              cursor: "pointer",
-            }}
-          >
-            <Image
-              style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
-              src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
-              alt="მოხარშული"
-              width={250}
-              height={250}
-              className="hover-effect"
-            />
-            <div style={{ color: "black", fontSize: "18px" }}>
-              ძეხვი საექიმო
-            </div>
-          </div>
-        </Link>
-
-        <Link href="/products/66d97704ec812e1a9751fdb1" passHref>
-          <div
-            style={{
-              textAlign: "center",
-              margin: "10px 30px",
-              cursor: "pointer",
-            }}
-          >
-            <Image
-              style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
-              src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
-              alt="სოსისი"
-              width={250}
-              height={250}
-              className="hover-effect"
-            />
-            <div style={{ color: "black", fontSize: "18px" }}>
-              ძეხვი სამოყვარულო
-            </div>
-          </div>
-        </Link>
-
-        <Link href="/products/66d97315ec812e1a9751fd94" passHref>
-          <div
-            style={{
-              textAlign: "center",
-              margin: "10px 30px",
-              cursor: "pointer",
-            }}
-          >
-            <Image
-              style={{ transition: "transform 0.3s, box-shadow 0.3s" }}
-              src="https://miviuyvan.s3.amazonaws.com/1724919680002.png"
-              alt="სერველატი"
-              width={250}
-              height={250}
-              className="hover-effect"
-            />
-            <div style={{ color: "black", fontSize: "18px" }}>
-              ძეხვი პიკანტური
-            </div>
-          </div>
-        </Link>
+        ))}
       </div>
 
       <style jsx>{`
+        .hover-effect {
+          transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+        }
+
         .hover-effect:hover {
-          transform: scale(1.3); /* Image zoom on hover */
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+          transform: scale(1.1); /* Slightly increase the size on hover */
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
         }
       `}</style>
     </div>
