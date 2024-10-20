@@ -37,13 +37,17 @@ const PaginationButton = styled.div`
   background-color: ${({ isActive }) => (isActive ? "#8b1f1f" : "#a22a22")};
   color: white;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none; /* Ensure no underline on the button text */
+  border: none; /* Ensure no border on hover */
   &:hover {
     background-color: #8b1f1f;
   }
 `;
 
-// Modify the ProductsGrid component to be responsive
+const StyledLink = styled(Link)`
+  text-decoration: none; /* Ensure no underline from Link */
+`;
+
 const ResponsiveProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Default: 4 products per row */
@@ -75,11 +79,11 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
         {/* Numbered Pagination */}
         <PaginationWrapper>
           {pageNumbers.map((pageNum) => (
-            <Link href={`?page=${pageNum}`} passHref key={pageNum}>
+            <StyledLink href={`?page=${pageNum}`} passHref key={pageNum}>
               <PaginationButton isActive={pageNum === currentPage}>
                 {pageNum}
               </PaginationButton>
-            </Link>
+            </StyledLink>
           ))}
         </PaginationWrapper>
       </Center>
