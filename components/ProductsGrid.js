@@ -1,30 +1,48 @@
+// ProductsGrid.jsx
 import styled from "styled-components";
 import ProductBox from "@/components/ProductBox";
 
-const GridWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  min-height: 100vh; /* გვერდი მთლიანი ეკრანის სიმაღლეზე */
-`;
-
 const StyledProductsGrid = styled.div`
   display: grid;
-  gap: 1.25rem; /* 20px-equivalent */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  max-width: 1200px; /* კონტეინერის მაქსიმალური სიგანე */
-  width: 100%; /* კონტეინერი მშობლის სიგანეს მოერგება */
+  gap: 20px; /* Space between items */
+
+  /* Default for larger screens */
+  grid-template-columns: repeat(
+    4,
+    minmax(200px, 1fr)
+  ); /* Min 200px to prevent shrinking */
+
+  img {
+    width: 100%; /* Ensure images take up the full width of the grid item */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(
+      3,
+      minmax(250px, 1fr)
+    ); /* Prevent shrinking */
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(
+      2,
+      minmax(230px, 1fr)
+    ); /* Two products on smaller screens */
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; /* One product per row on very small screens */
+  }
 `;
 
 export default function ProductsGrid({ products }) {
   return (
-    <GridWrapper>
-      <StyledProductsGrid>
-        {products.map((product) => (
+    <StyledProductsGrid>
+      {products?.length > 0 &&
+        products.map((product) => (
           <ProductBox key={product._id} {...product} />
         ))}
-      </StyledProductsGrid>
-    </GridWrapper>
+    </StyledProductsGrid>
   );
 }

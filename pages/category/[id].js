@@ -42,7 +42,7 @@ export default function CategoryPage({
       <Header />
       <Center>
         <title>{category.name}</title>
-        <div style={{ marginLeft: "100px", marginTop: "50px" }}>
+        <div style={{ marginLeft: "10px", marginTop: "50px" }}>
           <ProductsGrid products={products} />
         </div>
         {/* პაგინაცია */}
