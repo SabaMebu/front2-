@@ -82,7 +82,13 @@ export default function ProductPage({ product }) {
       <Center>
         <ColWrapper>
           <WhiteBox>
-            <ImageWrapper>
+            <ImageWrapper
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <IMAGE
                 src={product.images?.[0]}
                 alt="Product"
@@ -117,7 +123,10 @@ export default function ProductPage({ product }) {
 
             <div style={{ textAlign: "center", marginTop: "10px" }}>
               <IMAGE
-                style={{ maxWidth: "37%", marginTop: "18px" }}
+                style={{
+                  maxWidth: "37%",
+                  marginTop: "18px",
+                }}
                 src="https://miviuyvan.s3.amazonaws.com/1725523038718.png"
                 alt="Side Image"
               />

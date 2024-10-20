@@ -10,7 +10,7 @@ function Sosisi() {
         overflow: "hidden", // Prevent vertical scroll
       }}
     >
-      <h1 style={{ marginTop: "6rem", padding: "2rem", fontSize: "2.5rem" }}>
+      <h1 style={{ marginTop: "6rem", padding: "2rem" }}>
         გემო რომელიც ყველას უყვარს
       </h1>
       <div
@@ -22,6 +22,7 @@ function Sosisi() {
         }}
       ></div>
       <span style={{ fontSize: "1.25rem" }}>
+        {" "}
         {/* 20px font size in rem */}
         ყოველთვის გემრიელი, სტაბილურად ხარისხიანი და ამავდროულად ხელმისაწვდომი
         პროდუქცია.
@@ -30,46 +31,15 @@ function Sosisi() {
       <div
         style={{
           marginTop: "2.5rem", // 40px to rem
-          width: "100%",
-          height: "auto",
-          maxHeight: "60vh", // Set a max height for larger screens
-          display: "flex", // Use flexbox for centering
-          justifyContent: "center", // Center the image horizontally
-          alignItems: "center", // Center the image vertically
-          overflow: "hidden", // Hide overflow
+          width: "100vw",
+          height: "calc(90vh - 11.25rem)", // Converted 180px to rem
+          backgroundImage:
+            "url('https://miviuyvan.s3.amazonaws.com/1724926731122.jpg')",
+          backgroundSize: "contain", // Maintain image aspect ratio
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
-      >
-        <img
-          src="https://miviuyvan.s3.amazonaws.com/1724926731122.jpg"
-          alt="Sosisi"
-          style={{
-            maxWidth: "100%", // Ensure image does not exceed container width
-            maxHeight: "100%", // Ensure image does not exceed container height
-            objectFit: "cover", // Maintain aspect ratio
-          }}
-        />
-      </div>
-
-      {/* Responsive styles using media queries */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          h1 {
-            font-size: 2rem; /* Adjust font size for smaller screens */
-          }
-          span {
-            font-size: 1rem; /* Adjust font size for smaller screens */
-          }
-        }
-
-        @media (max-width: 480px) {
-          h1 {
-            font-size: 1.5rem; /* Further adjust font size for mobile */
-          }
-          span {
-            font-size: 0.875rem; /* Further adjust font size for mobile */
-          }
-        }
-      `}</style>
+      ></div>
     </div>
   );
 }
