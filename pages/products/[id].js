@@ -92,12 +92,12 @@ export default function ProductPage({ product }) {
               <IMAGE
                 src={product.images?.[0]}
                 alt="Product"
-                onMouseOver={(e) =>
-                  (e.currentTarget.style.transform = "scale(1.1)")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.style.transform = "scale(1)")
-                }
+                // onMouseOver={(e) =>
+                //   (e.currentTarget.style.transform = "scale(1.1)")
+                // }
+                // onMouseOut={(e) =>
+                //   (e.currentTarget.style.transform = "scale(1)")
+                // }
               />
             </ImageWrapper>
 

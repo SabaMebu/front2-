@@ -58,7 +58,7 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
     <>
       <Header />
       <Center>
-        <TitleWrapper>
+        <TitleWrapper style={{ marginLeft: "30px" }}>
           <Title>ყველა პროდუქტი</Title>
         </TitleWrapper>
 
