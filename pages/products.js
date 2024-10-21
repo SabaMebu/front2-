@@ -19,7 +19,7 @@ const TitleWrapper = styled.div`
   text-align: center;
   width: 100vw; /* Takes up full width of the viewport */
   margin-bottom: 20px;
-  padding-right: 50px; /* Adds space on the right side */
+  padding-right: 1px; /* Adds space on the right side */
   position: relative;
   left: 40%;
   transform: translateX(-50%); /* Centers the wrapper */
@@ -62,7 +62,7 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
     <>
       <Header />
       <Center>
-        <TitleWrapper style={{ marginLeft: "26px" }}>
+        <TitleWrapper style={{}}>
           <Title>ყველა პროდუქტი</Title>
         </TitleWrapper>
 
