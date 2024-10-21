@@ -106,7 +106,9 @@ export default function CategoriesPage({ mainCategories, categoriesProducts }) {
           <CategoryWrapper key={cat._id}>
             <CategoryTitle>
               <span>{cat.name}</span>
-              <ShowAllLink href={"/category/" + cat._id}>Show all</ShowAllLink>
+              <ShowAllLink href={"/category/" + cat._id}>
+                მეტის ჩვენება
+              </ShowAllLink>
             </CategoryTitle>
 
             <CategoryGrid>

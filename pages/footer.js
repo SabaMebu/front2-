@@ -148,7 +148,7 @@ export default function Footer() {
     <>
       {/* SEO meta tags */}
       <Head>
-        <title>Footer Section</title>
+        <title>Onima</title>
         <meta
           name="description"
           content="This is the footer section for our website."
