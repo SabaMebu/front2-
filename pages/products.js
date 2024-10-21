@@ -21,7 +21,7 @@ const TitleWrapper = styled.div`
   margin-bottom: 20px;
   padding-right: 1px; /* Adds space on the right side */
   position: relative;
-  left: 49%;
+  left: 48%;
   transform: translateX(-50%); /* Centers the wrapper */
 `;
 
