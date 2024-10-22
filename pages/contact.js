@@ -3,6 +3,18 @@ import { useState } from "react";
 import styled from "styled-components";
 import Footer from "./footer";
 
+const TitleWrapper = styled.div`
+  background-color: #f5f5f5; /* Gray background */
+  padding: 27px 0; /* Top and bottom padding */
+  text-align: center; /* Center text */
+  width: 100vw; /* Stretch background to full viewport width */
+  position: relative; /* Positioning control */
+  left: 48%; /* Compensate for left shift */
+  transform: translateX(-50%); /* Compensate for left shift */
+  margin: 12px 0 20px; /* Top and bottom margins */
+  background-color: #a22a22;
+`;
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -43,6 +55,7 @@ const ImageWrapper = styled.div`
 
   img {
     width: 100%;
+    height: 600px;
     border-radius: 8px;
     object-fit: cover; /* სურათის ზომის კონტროლი */
   }
@@ -56,7 +69,7 @@ const InfoBlock = styled.div`
 `;
 
 const Divider = styled.div`
-  width: 50px;
+  width: 40px;
   height: 3px;
   background-color: #a22a22;
   margin-bottom: 20px;
@@ -155,10 +168,18 @@ export default function ContactPage() {
     e.preventDefault();
     console.log("Form data: ", formData);
   };
+  const Title = styled.h1`
+    font-size: 2em;
+    color: white;
+    margin: 0;
+  `;
 
   return (
     <>
       <Header />
+      <TitleWrapper>
+        <Title>კონტაქტი</Title>
+      </TitleWrapper>
       <Container>
         <LeftColumn>
           <ImageWrapper>
@@ -167,42 +188,6 @@ export default function ContactPage() {
               alt="Contact Page Image"
             />
           </ImageWrapper>
-          <Title>საკონტაქტო ფორმა</Title>
-          <Divider />
-          <Form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="subject"
-              placeholder="Message subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Your message here"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <button type="submit">Send Email</button>
-          </Form>
         </LeftColumn>
 
         <RightColumn>
@@ -221,7 +206,7 @@ export default function ContactPage() {
                 <img
                   src="https://miviuyvan.s3.amazonaws.com/1726663189506.png"
                   alt="Facebook"
-                  style={{ width: "55px", height: "55px" }} // გამოსახულების ზომის კონტროლი
+                  style={{ width: "55px", height: "70px" }} // გამოსახულების ზომის კონტროლი
                 />
               </a>
             </div>
@@ -229,16 +214,6 @@ export default function ContactPage() {
             <Divider />
 
             <ContactInfo>
-              <div className="contact-item">
-                <img
-                  src="https://miviuyvan.s3.amazonaws.com/1726662964405.png"
-                  alt="Email"
-                />
-                <div className="contact-details">
-                  <h4>ელ ფოსტა</h4>
-                  <p>info@onlma.ge</p>
-                </div>
-              </div>
               <div className="contact-item">
                 <img
                   src="https://miviuyvan.s3.amazonaws.com/1726663692519.png"
