@@ -10,19 +10,19 @@ import Link from "next/link";
 const Title = styled.h1`
   font-size: 2em;
   margin: 0;
-  color: white;
+  color: white; /* Optional: Set title text color to white for contrast */
 `;
 
 const TitleWrapper = styled.div`
-  background-color: #a22a22;
+  background-color: #a22a22; /* Red background */
   padding: 35px 0 20px;
   text-align: center;
-  width: 100vw;
+  width: 100vw; /* Takes up full width of the viewport */
   margin-bottom: 20px;
-  padding-right: 1px;
+  padding-right: 1px; /* Adds space on the right side */
   position: relative;
   left: 48%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* Centers the wrapper */
 `;
 
 const PaginationWrapper = styled.div`
@@ -46,26 +46,34 @@ const PaginationButton = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  text-decoration: none;
+  text-decoration: none; /* Ensure no underline from Link */
 `;
 
 const ResponsiveProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* Default: 4 products per row */
+  /* gap: 20px; */
 `;
 
 export default function ProductsPage({ products, currentPage, totalPages }) {
+  // Generate an array of page numbers
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <>
       <Header />
       <Center>
-        <TitleWrapper>
+        <TitleWrapper style={{}}>
           <Title>ყველა პროდუქტი</Title>
         </TitleWrapper>
 
-        <ResponsiveProductsGrid>
+        <ResponsiveProductsGrid
+          style={{
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <ProductsGrid products={products} />
         </ResponsiveProductsGrid>
 
@@ -88,16 +96,19 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
 export async function getServerSideProps(context) {
   await mongooseConnect();
 
+  // Get the current page from query params, default to 1 if not provided
   const page = parseInt(context.query.page) || 1;
-  const limit = 10;
+  const limit = 10; // Number of products per page
   const skip = (page - 1) * limit;
 
+  // Fetch products with pagination
   const products = await Product.find({}, null, {
     sort: { _id: -1 },
     skip: skip,
     limit: limit,
   });
 
+  // Fetch total number of products
   const totalProducts = await Product.countDocuments();
   const totalPages = Math.ceil(totalProducts / limit);
 
