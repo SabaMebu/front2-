@@ -49,6 +49,30 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const ThumbnailWrapper = styled.div`
+  display: flex;
+  gap: 15px; /* Increased gap for better spacing */
+  margin-top: 20px;
+  justify-content: center;
+
+  img {
+    cursor: pointer;
+    width: 100px; /* Increased width for larger thumbnails */
+    height: 100px; /* Increased height for larger thumbnails */
+    object-fit: cover;
+    transition: transform 0.3s, border 0.3s;
+    border: 2px solid transparent;
+  }
+
+  img.selected {
+    border-color: #f00; /* Highlight color for the selected image */
+  }
+
+  img:hover {
+    transform: scale(1.1);
+  }
+`;
+
 const DescriptionWrapper = styled.div`
   text-align: center;
   max-width: 600px;
@@ -65,6 +89,7 @@ const DescriptionWrapper = styled.div`
 
 export default function ProductPage({ product }) {
   const [isMounted, setIsMounted] = useState(false);
+  const [mainImage, setMainImage] = useState(product.images?.[0]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -72,6 +97,10 @@ export default function ProductPage({ product }) {
 
   const handleBackClick = () => {
     window.history.back();
+  };
+
+  const handleThumbnailClick = (image) => {
+    setMainImage(image);
   };
 
   if (!isMounted) return <div />;
@@ -89,17 +118,21 @@ export default function ProductPage({ product }) {
                 justifyContent: "center",
               }}
             >
-              <IMAGE
-                src={product.images?.[0]}
-                alt="Product"
-                // onMouseOver={(e) =>
-                //   (e.currentTarget.style.transform = "scale(1.1)")
-                // }
-                // onMouseOut={(e) =>
-                //   (e.currentTarget.style.transform = "scale(1)")
-                // }
-              />
+              <IMAGE src={mainImage} alt="Product" />
             </ImageWrapper>
+
+            {/* Thumbnail images */}
+            <ThumbnailWrapper>
+              {product.images?.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`Thumbnail ${index + 1}`}
+                  onClick={() => handleThumbnailClick(img)}
+                  className={mainImage === img ? "selected" : ""}
+                />
+              ))}
+            </ThumbnailWrapper>
 
             <DescriptionWrapper>
               <p style={{ margin: "0", lineHeight: "1.6" }}>
