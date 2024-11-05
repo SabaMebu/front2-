@@ -36,7 +36,7 @@ function CarouselPage() {
               objectFit: "contain",
             }}
             className="d-block"
-            src="https://miviuyvan.s3.amazonaws.com/1723725965572.jpeg"
+            src="https://miviuyvan.s3.amazonaws.com/1730790945211.jpg"
             alt="Second slide"
           />
         </Carousel.Item>

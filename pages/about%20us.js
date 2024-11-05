@@ -124,7 +124,7 @@ export default function AboutPage() {
       <Header />
       <Center>
         <TitleWrapper>
-          <Title>ჩვენი ისტორია</Title>
+          <Title>ჩვენს შესახებ</Title>
         </TitleWrapper>
 
         {/* ახალი დივი ხაზებისთვის და ტექსტებისთვის */}
