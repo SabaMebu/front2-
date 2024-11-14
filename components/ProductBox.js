@@ -1,4 +1,3 @@
-// ProductBox.jsx
 import styled from "styled-components";
 import Link from "next/link";
 
@@ -9,7 +8,7 @@ const ProductWrapper = styled.div`
 `;
 
 const WhiteBox = styled(Link)`
-  background-color: white; /* White background */
+  background-color: white;
   padding: 20px;
   border-radius: 8px; /* Slightly rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
@@ -19,13 +18,16 @@ const WhiteBox = styled(Link)`
   align-items: center; /* Centers content */
 
   img {
-    max-width: 150%; /* Ensure the image fits */
-    max-height: 150px; /* Limit height */
+    width: 100%; /* Ensures image fills container width */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 200px; /* Limit maximum height */
     border-radius: 4px; /* Rounded corners for the image */
+    object-fit: contain; /* Ensures image is fully visible without cropping */
   }
+
   @media (max-width: 476px) {
     img {
-      max-height: 260px;
+      max-height: 220px; /* Slightly larger for smaller screens */
     }
   }
 `;
@@ -42,7 +44,14 @@ export default function ProductBox({ _id, description, images, title }) {
   return (
     <ProductWrapper>
       <WhiteBox href={url}>
-        <img src={images[0]} alt={title} />
+        <img
+          src={images[0]}
+          alt={title}
+          srcSet={`${images[0]} 1x, ${
+            images[1] || images[0]
+          } 2x`} /* Higher resolution image if available */
+          sizes="(max-width: 768px) 100vw, 200px" /* Adjusts image size based on screen width */
+        />
       </WhiteBox>
       <Description>{title}</Description>
     </ProductWrapper>
