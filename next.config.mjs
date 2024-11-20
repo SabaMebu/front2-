@@ -5,6 +5,10 @@ const nextConfig = {
     styledComponents: true,
   },
   images: { domains: ["miviuyvan.s3.amazonaws.com"] },
+  i18n: {
+    locales: ["ge", "en", "ru"],
+    defaultLocale: "ge",
+  },
 };
 
 export default nextConfig;

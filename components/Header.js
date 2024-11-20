@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import Center from "./Center";
 import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
-
+import { useTranslation } from "next-i18next";
 const StyledHeader = styled.header`
   background-color: white;
   position: fixed; /* Fix the header to the top */
@@ -96,6 +96,7 @@ const BurgerMenu = styled.div`
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useTranslation("common");
 
   return (
     <>
@@ -121,7 +122,7 @@ export default function Header() {
             {/* Navigation Links */}
             <StyledNav isOpen={menuOpen}>
               <NavLink href={"/"}>მთავარი</NavLink>
-              <NavLink href={"/products"}>პროდუქცია</NavLink>
+              <NavLink href={"/products"}>{t("production")}</NavLink>
               <NavLink href={"/categories"}>კატეგორიები</NavLink>
               <NavLink href={"/about us"}>ჩვენს შესახებ</NavLink>
               <NavLink href={"/contact"}>კონტაქტი</NavLink>

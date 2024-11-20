@@ -20,23 +20,20 @@ export default function HomePage() {
   const changeLanguage = (newLocale) => {
     router.push(router.pathname, router.asPath, { locale: newLocale });
   };
+
   return (
     <div>
-      <Header />
+      <h1>{t("hello")}</h1>
+      <p>Current language: {locale}</p>
+
+      {/* Language switcher buttons */}
       <button onClick={() => changeLanguage("en")}>English</button>
       <button onClick={() => changeLanguage("ge")}>Georgian</button>
-      <button onClick={() => changeLanguage("ru")}>russian</button>
-      <CarouselPage />
-      <div className="container mx-auto py-12">{/* <ProductGrid /> */}</div>
-      <Card />
-      <Popular />
-      <Sosisi />
-      <SosisiWithVideo />
-      <Market />
-      <Footer />
     </div>
   );
 }
+
+// Add getStaticProps for SSR translations
 export async function getStaticProps({ locale }) {
   return {
     props: {

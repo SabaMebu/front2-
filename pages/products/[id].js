@@ -8,6 +8,9 @@ import { Product } from "@/models/Product";
 import styled from "styled-components";
 import React from "react";
 import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 const ColWrapper = styled.div`
   display: grid;
@@ -90,6 +93,9 @@ const DescriptionWrapper = styled.div`
 export default function ProductPage({ product }) {
   const [isMounted, setIsMounted] = useState(false);
   const [mainImage, setMainImage] = useState(product.images?.[0]);
+  const { t } = useTranslation("common");
+  const router = useRouter();
+  const { locale } = router;
 
   useEffect(() => {
     setIsMounted(true);
@@ -143,7 +149,7 @@ export default function ProductPage({ product }) {
 
           <div>
             <Description style={{ fontSize: "30px", textAlign: "center" }}>
-              {product.title}
+              <h1>{product[`title_${locale}`] || product.title_ge}</h1>
             </Description>
 
             <hr
@@ -189,12 +195,15 @@ export default function ProductPage({ product }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ params, locale }) {
   await mongooseConnect();
-  const { id } = context.query;
+
+  const { id } = params;
   const product = await Product.findById(id);
+
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common"])),
       product: JSON.parse(JSON.stringify(product)),
     },
   };
