@@ -142,7 +142,9 @@ export default function ProductPage({ product }) {
 
             <DescriptionWrapper>
               <p style={{ margin: "0", lineHeight: "1.6" }}>
-                {product.description}
+                <h1>
+                  {product[`description_${locale}`] || product.description_ge}
+                </h1>
               </p>
             </DescriptionWrapper>
           </WhiteBox>
