@@ -6,6 +6,7 @@ import { Product } from "@/models/Product";
 import Link from "next/link";
 import styled from "styled-components";
 import Footer from "./footer";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Container = styled.div`
   overflow: hidden; /* This will prevent horizontal scrolling */
@@ -124,7 +125,10 @@ export default function CategoriesPage({ mainCategories, categoriesProducts }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { locale } = context; // Extract locale from context
+
+  // Fetch categories and products
   const categories = await Category.find({ parent: null });
   const mainCategories = categories.filter((c) => !c.parent);
   const categoriesProducts = {};
@@ -135,13 +139,15 @@ export async function getServerSideProps() {
       .map((c) => c._id.toString());
     const categoriesIds = [mainCatId, ...childCatIds];
     const products = await Product.find({ category: categoriesIds }, null, {
-      limit: 4, // Changed from 3 to 4
+      limit: 4,
       sort: { _id: -1 },
     });
     categoriesProducts[mainCat._id] = products;
   }
+
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common"])), // Load translations
       mainCategories: JSON.parse(JSON.stringify(mainCategories)),
       categoriesProducts: JSON.parse(JSON.stringify(categoriesProducts)),
     },

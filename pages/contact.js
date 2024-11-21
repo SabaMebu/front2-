@@ -1,35 +1,37 @@
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Header from "@/components/Header";
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import styled from "styled-components";
 import Footer from "./footer";
 
 const TitleWrapper = styled.div`
-  background-color: #a22a22; /* Red background */
-  padding: 27px 0; /* Top and bottom padding */
-  text-align: center; /* Center text */
-  width: 100vw; /* Stretch background to full viewport width */
-  position: relative; /* Positioning control */
-  left: 49%; /* Centering */
-  transform: translateX(-50%); /* Centering */
-  margin: 18px 0 20px; /* Top and bottom margins */
-  z-index: 10; /* Ensure it appears on top */
+  background-color: #a22a22;
+  padding: 27px 0;
+  text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 49%;
+  transform: translateX(-50%);
+  margin: 18px 0 20px;
+  z-index: 10;
 `;
 
 const Title = styled.h2`
-  color: white; /* White text color for contrast */
+  color: white;
   text-align: center;
-  margin: 0; /* Remove margin to reduce space */
-  font-size: 24px; /* Adjust font size as needed */
+  margin: 0;
+  font-size: 24px;
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  gap: 58px; /* Space between image and info */
+  gap: 58px;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 20px; /* Smaller gap for mobile */
+    gap: 20px;
   }
 `;
 
@@ -38,22 +40,22 @@ const LeftColumn = styled.div`
   max-width: 750px;
 
   @media (max-width: 768px) {
-    max-width: 100%; /* Take full width on small screens */
+    max-width: 100%;
   }
 `;
 
 const RightColumn = styled.div`
-  flex: 0.3; /* Reduced width for right block */
+  flex: 0.3;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 25px;
   border: 1px solid #ccc;
   border-radius: 15px;
-  max-width: 350px; /* Width limit */
+  max-width: 350px;
 
   @media (max-width: 768px) {
-    max-width: 100%; /* Take full width on small screens */
+    max-width: 100%;
   }
 `;
 
@@ -63,7 +65,7 @@ const ImageWrapper = styled.div`
   img {
     width: 100%;
     border-radius: 8px;
-    object-fit: cover; /* Control image size */
+    object-fit: cover;
   }
 `;
 
@@ -97,7 +99,7 @@ const ContactInfo = styled.div`
     img {
       width: 56px;
       height: 70px;
-      object-fit: contain; /* Control image size */
+      object-fit: contain;
     }
 
     .contact-details {
@@ -118,6 +120,8 @@ const ContactInfo = styled.div`
 `;
 
 export default function ContactPage() {
+  const { t } = useTranslation("common"); // Hook to fetch translations
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -141,32 +145,29 @@ export default function ContactPage() {
     <>
       <Header />
       <TitleWrapper>
-        <Title>კონტაქტი</Title>
+        <Title>{t("contact")}</Title>
       </TitleWrapper>
       <Container>
         <LeftColumn>
           <ImageWrapper>
             <img
               src="https://miviuyvan.s3.amazonaws.com/1730790446607.jpg"
-              alt="Contact Page Image"
+              alt={t("contact_image_alt")}
             />
           </ImageWrapper>
-          <Title>ჩვენს შესახებ</Title>
+          <Title>{t("about_us")}</Title>
           <ImageWrapper>
             <img
               src="https://miviuyvan.s3.amazonaws.com/1726661385736.png"
-              alt="Contact Page Image"
+              alt={t("contact_image_alt")}
             />
           </ImageWrapper>
         </LeftColumn>
 
         <RightColumn>
           <InfoBlock>
-            <h3>ჩვენ სოციალურ მედიაში</h3>
-            <p>
-              გამოგვყევით სოციალურ ქსელებში და მიიღეთ ინფორმაცია ჩვენი
-              პროდუქციის და კომპანიის შესახებ
-            </p>
+            <h3>{t("social_media")}</h3>
+            <p>{t("follow_us_social_media")}</p>
             <div>
               <a
                 href="https://facebook.com"
@@ -176,7 +177,7 @@ export default function ContactPage() {
                 <img
                   src="https://miviuyvan.s3.amazonaws.com/1726663189506.png"
                   alt="Facebook"
-                  style={{ width: "55px", height: "55px" }} // Image size control
+                  style={{ width: "55px", height: "55px" }}
                 />
               </a>
             </div>
@@ -190,7 +191,7 @@ export default function ContactPage() {
                   alt="Email"
                 />
                 <div className="contact-details">
-                  <h4>ელ ფოსტა</h4>
+                  <h4>{t("email")}</h4>
                   <p>info@onlma.ge</p>
                 </div>
               </div>
@@ -200,7 +201,7 @@ export default function ContactPage() {
                   alt="Phone"
                 />
                 <div className="contact-details">
-                  <h4>ტელეფონი</h4>
+                  <h4>{t("phone")}</h4>
                   <p>+995 431 273 193</p>
                 </div>
               </div>
@@ -210,8 +211,8 @@ export default function ContactPage() {
                   alt="Address"
                 />
                 <div className="contact-details">
-                  <h4>მისამართი</h4>
-                  <p>ქუთაისი, გუგუნავას ქ. #13</p>
+                  <h4>{t("address")}</h4>
+                  <p>{t("address_details")}</p>
                 </div>
               </div>
             </ContactInfo>
@@ -221,4 +222,12 @@ export default function ContactPage() {
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])), // Load translations for 'common' namespace
+    },
+  };
 }

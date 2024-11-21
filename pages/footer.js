@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Head from "next/head";
+import { useTranslation } from "next-i18next";
 
 // Footer container
 const FooterContainer = styled.footer`
@@ -144,50 +145,53 @@ const SocialIcon = styled.a`
 `;
 
 export default function Footer() {
+  const { t } = useTranslation("common"); // Hook for translations
+
   return (
     <>
       {/* SEO meta tags */}
       <Head>
-        <title>Onima</title>
-        <meta
-          name="description"
-          content="This is the footer section for our website."
-        />
+        <title>{t("footer_title")}</title>
+        <meta name="description" content={t("footer_description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <FooterContainer>
         {/* First column */}
         <FooterColumn>
-          <FooterTitle>მომხმარებელი</FooterTitle>
-          <FooterLink href="#">დახმარება</FooterLink>
-          <FooterLink href="#">ქსელის რეგულაცია</FooterLink>
-          <FooterLink href="#">პარტნიორები</FooterLink>
+          <FooterTitle>{t("customer")}</FooterTitle>
+          <FooterLink href="#">{t("help")}</FooterLink>
+          <FooterLink href="#">{t("network_regulation")}</FooterLink>
+          <FooterLink href="#">{t("partners")}</FooterLink>
         </FooterColumn>
 
         {/* Second column */}
         <FooterColumn>
-          <FooterTitle>ჩვენ</FooterTitle>
-          <FooterLink href="#">კომპანიის შესახებ</FooterLink>
-          <FooterLink href="#">გუნდი</FooterLink>
-          <FooterLink href="#">კარიერა</FooterLink>
+          <FooterTitle>{t("about_us")}</FooterTitle>
+          <FooterLink href="#">{t("company_info")}</FooterLink>
+          <FooterLink href="#">{t("team")}</FooterLink>
+          <FooterLink href="#">{t("career")}</FooterLink>
         </FooterColumn>
 
         {/* Third column - Newsletter */}
         <FooterColumn>
-          <FooterTitle>სიახლეების გამოწერა</FooterTitle>
+          <FooterTitle>{t("newsletter")}</FooterTitle>
           <NewsletterForm>
-            <EmailInput
-              type="email"
-              placeholder="შეიყვანეთ თქვენი ელფოსტა"
-              required
-            />
-            <SubmitButton type="submit">გამოწერა</SubmitButton>
+            <EmailInput type="email" placeholder={t("enter_email")} required />
+            <SubmitButton type="submit">{t("subscribe")}</SubmitButton>
           </NewsletterForm>
         </FooterColumn>
       </FooterContainer>
 
-      <FooterBottom>ყველა უფლება დაცულია 2018 შპს ბრენდ</FooterBottom>
+      <FooterBottom>{t("all_rights_reserved")}</FooterBottom>
     </>
   );
+}
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])), // Load translations
+    },
+  };
 }

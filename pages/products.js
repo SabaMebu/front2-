@@ -1,3 +1,4 @@
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import styled from "styled-components";
 import Header from "@/components/Header";
 import Center from "@/components/Center";
@@ -10,19 +11,18 @@ import Link from "next/link";
 const Title = styled.h1`
   font-size: 2em;
   margin: 0;
-  color: white; /* Optional: Set title text color to white for contrast */
+  color: white;
 `;
 
 const TitleWrapper = styled.div`
-  background-color: #a22a22; /* Red background */
+  background-color: #a22a22;
   padding: 35px 0 20px;
   text-align: center;
-  width: 100vw; /* Takes up full width of the viewport */
+  width: 100vw;
   margin-bottom: 20px;
-  padding-right: 1px; /* Adds space on the right side */
   position: relative;
   left: 48%;
-  transform: translateX(-50%); /* Centers the wrapper */
+  transform: translateX(-50%);
 `;
 
 const PaginationWrapper = styled.div`
@@ -46,24 +46,22 @@ const PaginationButton = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  text-decoration: none; /* Ensure no underline from Link */
+  text-decoration: none;
 `;
 
 const ResponsiveProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Default: 4 products per row */
-  /* gap: 20px; */
+  grid-template-columns: repeat(4, 1fr);
 `;
 
 export default function ProductsPage({ products, currentPage, totalPages }) {
-  // Generate an array of page numbers
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <>
       <Header />
       <Center>
-        <TitleWrapper style={{}}>
+        <TitleWrapper>
           <Title>ყველა პროდუქტი</Title>
         </TitleWrapper>
 
@@ -77,7 +75,6 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
           <ProductsGrid products={products} />
         </ResponsiveProductsGrid>
 
-        {/* Numbered Pagination */}
         <PaginationWrapper>
           {pageNumbers.map((pageNum) => (
             <StyledLink href={`?page=${pageNum}`} passHref key={pageNum}>
@@ -94,26 +91,26 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
 }
 
 export async function getServerSideProps(context) {
+  const { locale } = context; // Extract the current locale from the context
+
   await mongooseConnect();
 
-  // Get the current page from query params, default to 1 if not provided
   const page = parseInt(context.query.page) || 1;
-  const limit = 10; // Number of products per page
+  const limit = 10;
   const skip = (page - 1) * limit;
 
-  // Fetch products with pagination
   const products = await Product.find({}, null, {
     sort: { _id: -1 },
     skip: skip,
     limit: limit,
   });
 
-  // Fetch total number of products
   const totalProducts = await Product.countDocuments();
   const totalPages = Math.ceil(totalProducts / limit);
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common"])),
       products: JSON.parse(JSON.stringify(products)),
       currentPage: page,
       totalPages: totalPages,

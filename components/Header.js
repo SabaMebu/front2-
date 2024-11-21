@@ -1,46 +1,49 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { useState } from "react";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import Center from "./Center";
 import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
-import { useTranslation } from "next-i18next";
+
+// Styled components (same as before)
 const StyledHeader = styled.header`
   background-color: white;
-  position: fixed; /* Fix the header to the top */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10; /* Ensure it's above other content */
+  z-index: 10;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 90px; /* Set a fixed height for the header */
+  height: 90px;
 `;
 
 const Spacer = styled.div`
-  height: 80px; /* Equal to the header height to push content below */
+  height: 80px;
 `;
 
 const Logo = styled(Link)`
   color: #fff;
   text-decoration: none;
   display: flex;
-  align-items: center; /* Center the logo vertically */
-  height: 80%; /* Ensure it takes the full height of the header */
+  align-items: center;
+  height: 80%;
   margin-top: 10px;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 20px; /* Adjust padding to fit your design */
-  align-items: center; /* Center items vertically */
-  height: 100%; /* Make sure wrapper takes full height of the header */
+  padding: 0 20px;
+  align-items: center;
+  height: 100%;
 `;
 
 const StyledNav = styled.nav`
   display: flex;
   gap: 15px;
   position: absolute;
-  top: 100%; /* Below the header */
+  top: 100%;
   left: 0;
   right: 0;
   justify-content: center;
@@ -94,9 +97,78 @@ const BurgerMenu = styled.div`
   }
 `;
 
+// Additional styles for the language switcher
+const LanguageSwitcher = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+`;
+
+const LanguageButton = styled.button`
+  background-color: #ff0000;
+  color: white;
+  padding: 5px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+  width: 80px;
+
+  &:hover {
+    background-color: #d00000;
+  }
+`;
+
+const ArrowIcon = styled.span`
+  font-size: 10px;
+  transform: ${({ open }) => (open ? "rotate(180deg)" : "rotate(0deg)")};
+  transition: transform 0.3s ease;
+`;
+
+const LanguageDropdown = styled.div`
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+`;
+
+const DropdownLanguageButton = styled.button`
+  background-color: white;
+  color: #333;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useTranslation("common");
+  const router = useRouter();
+  const { locale } = router;
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const changeLanguage = (newLocale) => {
+    router.push(router.pathname, router.asPath, { locale: newLocale });
+    setIsDropdownOpen(false);
+  };
 
   return (
     <>
@@ -111,31 +183,42 @@ export default function Header() {
                 height={70}
               />
             </Logo>
-
-            {/* Burger Menu Icon */}
+            <LanguageSwitcher>
+              <LanguageButton
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                {locale.toUpperCase()}{" "}
+                <ArrowIcon open={isDropdownOpen}>↓</ArrowIcon>
+              </LanguageButton>
+              {isDropdownOpen && (
+                <LanguageDropdown>
+                  {["ge", "en", "ru"].map((lng) => (
+                    <DropdownLanguageButton
+                      key={lng}
+                      onClick={() => changeLanguage(lng)}
+                    >
+                      {lng.toUpperCase()}
+                    </DropdownLanguageButton>
+                  ))}
+                </LanguageDropdown>
+              )}
+            </LanguageSwitcher>
             <BurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
               <span></span>
               <span></span>
               <span></span>
             </BurgerMenu>
-
-            {/* Navigation Links */}
             <StyledNav isOpen={menuOpen}>
-              <NavLink href={"/"}>მთავარი</NavLink>
-              <NavLink href={"/products"}>{t("production")} </NavLink>
+              <NavLink href={"/"}>{t("home")}</NavLink>
+              <NavLink href={"/products"}>{t("production")}</NavLink>
               <NavLink href={"/categories"}>{t("category")}</NavLink>
-              <NavLink href={"/about us"}>ჩვენს შესახებ</NavLink>
-              <NavLink href={"/contact"}>კონტაქტი</NavLink>
+              <NavLink href={"/about us"}>about</NavLink>
+              <NavLink href={"/contact"}>contact</NavLink>
             </StyledNav>
           </Wrapper>
         </Center>
       </StyledHeader>
-
-      {/* Spacer to prevent content from being hidden behind the header */}
       <Spacer />
-
-      {/* შენი სხვა კონტენტი */}
-      <div>{/* თქვენი დანარჩენი კონტენტი */}</div>
     </>
   );
 }
