@@ -7,6 +7,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Footer from "./footer";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
   overflow: hidden; /* This will prevent horizontal scrolling */
@@ -95,6 +96,9 @@ const ProductImage = styled.img`
 `;
 
 export default function CategoriesPage({ mainCategories, categoriesProducts }) {
+  const router = useRouter();
+  const { locale } = router;
+
   return (
     <Container>
       <Header />
@@ -106,7 +110,9 @@ export default function CategoriesPage({ mainCategories, categoriesProducts }) {
         {mainCategories.map((cat) => (
           <CategoryWrapper key={cat._id}>
             <CategoryTitle>
-              <span>{cat.name}</span>
+              <span>{locale === "ge" ? cat.name_ge : null}</span>
+              <span>{locale === "en" ? cat.name_en : null}</span>
+              <span>{locale === "ru" ? cat.name_ru : null}</span>
               <ShowAllLink href={"/category/" + cat._id}>
                 მეტის ჩვენება
               </ShowAllLink>
