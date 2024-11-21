@@ -122,8 +122,8 @@ export default function Header() {
             {/* Navigation Links */}
             <StyledNav isOpen={menuOpen}>
               <NavLink href={"/"}>მთავარი</NavLink>
-              <NavLink href={"/products"}>{t("production")}</NavLink>
-              <NavLink href={"/categories"}>კატეგორიები</NavLink>
+              <NavLink href={"/products"}>{t("production")} </NavLink>
+              <NavLink href={"/categories"}>{t("category")}</NavLink>
               <NavLink href={"/about us"}>ჩვენს შესახებ</NavLink>
               <NavLink href={"/contact"}>კონტაქტი</NavLink>
             </StyledNav>
