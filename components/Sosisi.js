@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 
 function Sosisi() {
+  const { t } = useTranslation("common");
+
   return (
     <div
       style={{
@@ -11,7 +14,7 @@ function Sosisi() {
       }}
     >
       <h1 style={{ marginTop: "6rem", padding: "2rem", fontSize: "2.5rem" }}>
-        გემო რომელიც ყველას უყვარს
+        {t("taste everyone loves")}
       </h1>
       <div
         style={{
@@ -22,9 +25,7 @@ function Sosisi() {
         }}
       ></div>
       <span style={{ fontSize: "1.25rem" }}>
-        {/* 20px font size in rem */}
-        ყოველთვის გემრიელი, სტაბილურად ხარისხიანი და ამავდროულად ხელმისაწვდომი
-        პროდუქცია.
+        {t("Always tasty, steadily quality and affordable products")}
       </span>
 
       <div
@@ -41,7 +42,7 @@ function Sosisi() {
       >
         <img
           src="https://miviuyvan.s3.amazonaws.com/1724926731122.jpg"
-          alt="Sosisi"
+          alt={t("sosisi")}
           style={{
             width: "100%", // Ensure image takes full width
             height: "100%", // Ensure image takes full height
@@ -75,3 +76,11 @@ function Sosisi() {
 }
 
 export default Sosisi;
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

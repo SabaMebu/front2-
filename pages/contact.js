@@ -166,7 +166,7 @@ export default function ContactPage() {
 
         <RightColumn>
           <InfoBlock>
-            <h3>{t("social_media")}</h3>
+            <h3>{t("socialmedia")}</h3>
             <p>{t("follow_us_social_media")}</p>
             <div>
               <a

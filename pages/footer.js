@@ -161,14 +161,14 @@ export default function Footer() {
         <FooterColumn>
           <FooterTitle>{t("customer")}</FooterTitle>
           <FooterLink href="#">{t("help")}</FooterLink>
-          <FooterLink href="#">{t("network_regulation")}</FooterLink>
+          <FooterLink href="#">{t("network regulation")}</FooterLink>
           <FooterLink href="#">{t("partners")}</FooterLink>
         </FooterColumn>
 
         {/* Second column */}
         <FooterColumn>
-          <FooterTitle>{t("about_us")}</FooterTitle>
-          <FooterLink href="#">{t("company_info")}</FooterLink>
+          <FooterTitle>{t("about us")}</FooterTitle>
+          <FooterLink href="#">{t("company info")}</FooterLink>
           <FooterLink href="#">{t("team")}</FooterLink>
           <FooterLink href="#">{t("career")}</FooterLink>
         </FooterColumn>
@@ -183,7 +183,7 @@ export default function Footer() {
         </FooterColumn>
       </FooterContainer>
 
-      <FooterBottom>{t("all_rights_reserved")}</FooterBottom>
+      <FooterBottom>{t("all rights reserved")}</FooterBottom>
     </>
   );
 }

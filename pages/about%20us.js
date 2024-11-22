@@ -85,34 +85,46 @@ const RightAlignedWrapper = styled.div`
   }
 `;
 
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const MainContent = styled.main`
+  flex-grow: 1;
+`;
+
 // About Page Component
 export default function AboutPage() {
   const { t } = useTranslation("common");
 
   return (
-    <>
+    <PageWrapper>
       <Header />
-      <Center>
-        <TitleWrapper>
-          <Title>{t("about_us")}</Title>
-        </TitleWrapper>
+      <MainContent>
+        <Center>
+          <TitleWrapper>
+            <Title>{t("about_us")}</Title>
+          </TitleWrapper>
 
-        <LineSection>
-          <div>
-            <RedLine />
-            <LineText>{t("company_overview")}</LineText>
-            <AdditionalText>{t("company_details")}</AdditionalText>
-          </div>
+          <LineSection>
+            <div>
+              <RedLine />
+              <LineText>{t("company_overview")}</LineText>
+              <AdditionalText>{t("company_details")}</AdditionalText>
+            </div>
 
-          <RightAlignedWrapper>
-            <RedLine />
-            <LineText>{t("quality_control")}</LineText>
-            <AdditionalText>{t("quality_control_details")}</AdditionalText>
-          </RightAlignedWrapper>
-        </LineSection>
-      </Center>
+            <RightAlignedWrapper>
+              <RedLine />
+              <LineText>{t("quality_control")}</LineText>
+              <AdditionalText>{t("quality_control_details")}</AdditionalText>
+            </RightAlignedWrapper>
+          </LineSection>
+        </Center>
+      </MainContent>
       <Footer />
-    </>
+    </PageWrapper>
   );
 }
 

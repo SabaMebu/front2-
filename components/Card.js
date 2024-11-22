@@ -1,9 +1,12 @@
 import IMAGE from "@/components/IMAGE"; // Custom IMAGE component
+import { useTranslation } from "next-i18next";
 
 function Card() {
+  const { t } = useTranslation("common");
+
   return (
     <div style={{ textAlign: "center", marginTop: "16px" }}>
-      <h1 style={{ marginTop: "130px" }}>ჩვენი პროდუქცია</h1>
+      <h1 style={{ marginTop: "130px" }}>{t("our production")}</h1>
       <div
         style={{
           width: "100px",
@@ -15,10 +18,7 @@ function Card() {
       <div
         style={{ marginTop: "65px", fontSize: "25px", marginBottom: "35px" }}
       >
-        <span>
-          ჩვენ ვაწარმოებთ 50-მდე დასახელების ხორცპროდუქტს ესენია: სოსისები,
-          მოხარშული ძეხვები, დელიკატესები, სერველატები
-        </span>
+        <span>{t("product description")}</span>
       </div>
       <div
         style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
@@ -30,12 +30,12 @@ function Card() {
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724764188618.png"
-            alt="დელიკატესი"
+            alt={t("delicacy")}
             width={200}
             height={150}
             className="hover-effect"
           />
-          <div className="title">დელიკატესი</div>
+          <div className="title">{t("delicacy")}</div>
         </div>
 
         <div style={{ textAlign: "center", margin: "55px 52px" }}>
@@ -45,12 +45,12 @@ function Card() {
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724764412523.png"
-            alt="მოხარშული"
+            alt={t("boiled")}
             width={300}
             height={200}
             className="hover-effect"
           />
-          <div className="title">მოხარშული</div>
+          <div className="title">{t("boiled")}</div>
         </div>
 
         <div style={{ textAlign: "center", margin: "55px 52px" }}>
@@ -60,12 +60,12 @@ function Card() {
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1723975157781.png"
-            alt="სოსისი"
+            alt={t("sausage")}
             width={300}
             height={200}
             className="hover-effect"
           />
-          <div className="title">სოსისი</div>
+          <div className="title">{t("sausage")}</div>
         </div>
 
         <div style={{ textAlign: "center", margin: "25px 20px" }}>
@@ -75,12 +75,12 @@ function Card() {
               transition: "transform 0.3s, box-shadow 0.3s",
             }}
             src="https://miviuyvan.s3.amazonaws.com/1724763820395.png"
-            alt="სერველატი"
+            alt={t("salami")}
             width={220}
             height={160}
             className="hover-effect"
           />
-          <div className="title">სერველატი</div>
+          <div className="title">{t("salami")}</div>
         </div>
       </div>
 
@@ -120,3 +120,11 @@ function Card() {
 }
 
 export default Card;
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

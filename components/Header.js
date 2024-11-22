@@ -52,7 +52,6 @@ const StyledNav = styled.nav`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
-
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   flex-direction: column;
 
@@ -103,6 +102,14 @@ const LanguageSwitcher = styled.div`
   flex-direction: column;
   align-items: flex-end;
   position: relative;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
+  }
 `;
 
 const LanguageButton = styled.button`
@@ -183,26 +190,7 @@ export default function Header() {
                 height={70}
               />
             </Logo>
-            <LanguageSwitcher>
-              <LanguageButton
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                {locale.toUpperCase()}{" "}
-                <ArrowIcon open={isDropdownOpen}>↓</ArrowIcon>
-              </LanguageButton>
-              {isDropdownOpen && (
-                <LanguageDropdown>
-                  {["ge", "en", "ru"].map((lng) => (
-                    <DropdownLanguageButton
-                      key={lng}
-                      onClick={() => changeLanguage(lng)}
-                    >
-                      {lng.toUpperCase()}
-                    </DropdownLanguageButton>
-                  ))}
-                </LanguageDropdown>
-              )}
-            </LanguageSwitcher>
+            {/* Language Switcher moved inside the Burger Menu */}
             <BurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
               <span></span>
               <span></span>
@@ -212,8 +200,29 @@ export default function Header() {
               <NavLink href={"/"}>{t("home")}</NavLink>
               <NavLink href={"/products"}>{t("production")}</NavLink>
               <NavLink href={"/categories"}>{t("category")}</NavLink>
-              <NavLink href={"/about us"}>about</NavLink>
-              <NavLink href={"/contact"}>contact</NavLink>
+              <NavLink href={"about%20us"}>{t("about_us")}</NavLink>
+              <NavLink href={"/contact"}>{t("contact")}</NavLink>
+              {/* Language Switcher inside the Nav when Menu is open */}
+              <LanguageSwitcher isMenuOpen={menuOpen}>
+                <LanguageButton
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                  {locale.toUpperCase()}{" "}
+                  <ArrowIcon open={isDropdownOpen}>↓</ArrowIcon>
+                </LanguageButton>
+                {isDropdownOpen && (
+                  <LanguageDropdown>
+                    {["ge", "en", "ru"].map((lng) => (
+                      <DropdownLanguageButton
+                        key={lng}
+                        onClick={() => changeLanguage(lng)}
+                      >
+                        {lng.toUpperCase()}
+                      </DropdownLanguageButton>
+                    ))}
+                  </LanguageDropdown>
+                )}
+              </LanguageSwitcher>
             </StyledNav>
           </Wrapper>
         </Center>

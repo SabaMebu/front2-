@@ -1,3 +1,5 @@
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 import Center from "@/components/Center";
 import Header from "@/components/Header";
 import ProductBox from "@/components/ProductBox";
@@ -6,7 +8,6 @@ import { Product } from "@/models/Product";
 import Link from "next/link";
 import styled from "styled-components";
 import Footer from "./footer";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
 const Container = styled.div`
@@ -88,14 +89,8 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-const ProductImage = styled.img`
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Fit image to container size */
-  border-radius: 10px; /* Add rounded corners around the image */
-`;
-
 export default function CategoriesPage({ mainCategories, categoriesProducts }) {
+  const { t } = useTranslation("common"); // Access translation function
   const router = useRouter();
   const { locale } = router;
 
@@ -104,7 +99,7 @@ export default function CategoriesPage({ mainCategories, categoriesProducts }) {
       <Header />
       <Center>
         <TitleWrapper>
-          <Title>კატეგორიები</Title>
+          <Title>{t("categories")}</Title> {/* Dynamic title */}
         </TitleWrapper>
 
         {mainCategories.map((cat) => (
@@ -114,7 +109,7 @@ export default function CategoriesPage({ mainCategories, categoriesProducts }) {
               <span>{locale === "en" ? cat.name_en : null}</span>
               <span>{locale === "ru" ? cat.name_ru : null}</span>
               <ShowAllLink href={"/category/" + cat._id}>
-                მეტის ჩვენება
+                {t("show_more")}
               </ShowAllLink>
             </CategoryTitle>
 

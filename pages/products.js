@@ -7,6 +7,7 @@ import { Product } from "@/models/Product";
 import ProductsGrid from "@/components/ProductsGrid";
 import Footer from "./footer";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 const Title = styled.h1`
   font-size: 2em;
@@ -55,6 +56,8 @@ const ResponsiveProductsGrid = styled.div`
 `;
 
 export default function ProductsPage({ products, currentPage, totalPages }) {
+  const { t } = useTranslation("common");
+
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
@@ -62,7 +65,7 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
       <Header />
       <Center>
         <TitleWrapper>
-          <Title>ყველა პროდუქტი</Title>
+          <Title>{t("all products")}</Title>
         </TitleWrapper>
 
         <ResponsiveProductsGrid

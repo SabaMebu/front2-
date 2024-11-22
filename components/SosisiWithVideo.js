@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "next-i18next";
 
 const VideoBackgroundWrapper = styled.div`
   position: relative;
@@ -13,25 +14,25 @@ const TitleWrapper = styled.div`
   left: 0;
   right: 0;
   text-align: center;
-  padding: 0 1.25rem; /* 20px to rem */
-  z-index: 1; /* Above video */
+  padding: 0 1.25rem;
+  z-index: 1;
 `;
 
 const TitleContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.875rem; /* 30px to rem */
-  border: 0.125rem solid white; /* 2px to rem */
-  border-radius: 0.5rem; /* 8px to rem, rounded corners */
-  background-color: rgba(0, 0, 0, 0.5); /* Background with transparency */
+  padding: 1.875rem;
+  border: 0.125rem solid white;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
   width: fit-content;
   margin: 0 auto;
-  margin-top: 9.875rem; /* Adjust margin for larger screens */
+  margin-top: 9.875rem;
 
   @media (max-width: 544px) {
-    margin-top: 9rem; /* Reduced margin for small screens */
-    flex-direction: column; /* Stack elements vertically */
+    margin-top: 9rem;
+    flex-direction: column;
     height: 100px;
   }
 `;
@@ -41,7 +42,7 @@ const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  margin-top: 15.9375rem; /* 255px to rem */
+  margin-top: 15.9375rem;
 `;
 
 const Video = styled.video`
@@ -49,7 +50,7 @@ const Video = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Behind title */
+  z-index: -1;
 `;
 
 const SubtitleWrapper = styled.div`
@@ -61,18 +62,18 @@ const SubtitleWrapper = styled.div`
   text-align: center;
 
   @media (max-width: 544px) {
-    padding: 0 1rem; /* Padding adjustments for smaller screens */
+    padding: 0 1rem;
   }
 `;
 
 const SubtitleIndicator = styled.div`
-  width: 6.25rem; /* 100px to rem */
-  height: 0.25rem; /* 4px to rem */
+  width: 6.25rem;
+  height: 0.25rem;
   background-color: #ff6347;
-  margin: 0 auto 1.25rem; /* 20px to rem */
+  margin: 0 auto 1.25rem;
 
   @media (max-width: 544px) {
-    width: 4rem; /* Adjust indicator width for small screens */
+    width: 4rem;
   }
 `;
 
@@ -81,11 +82,13 @@ const SubtitleText = styled.span`
   padding: 1.5rem;
 
   @media (max-width: 544px) {
-    font-size: 1rem; /* Reduce font size for small screens */
+    font-size: 1rem;
   }
 `;
 
 const VideoBackground = () => {
+  const { t } = useTranslation("common");
+
   return (
     <VideoBackgroundWrapper>
       {/* Title */}
@@ -95,8 +98,8 @@ const VideoBackground = () => {
             style={{
               flex: 1,
               border: 0,
-              borderTop: "0.125rem solid #FFF", // 2px to rem
-              marginRight: "7.5rem", // 120px to rem
+              borderTop: "0.125rem solid #FFF",
+              marginRight: "7.5rem",
             }}
           />
           <h1
@@ -104,7 +107,7 @@ const VideoBackground = () => {
               margin: 0,
               padding: 0,
               color: "white",
-              fontSize: "1.5rem", // 24px to rem
+              fontSize: "1.5rem",
             }}
           >
             HACCP & ISO22000
@@ -126,20 +129,25 @@ const VideoBackground = () => {
           <source src="video.mp4" type="video/mp4" />
           <source src="video.webm" type="video/webm" />
           <source src="video.ogv" type="video/ogg" />
-          Your browser does not support the video tag.
+          {t("browser_not_support_video")}
         </Video>
       </VideoContainer>
 
       {/* Subtitles */}
       <SubtitleWrapper>
         <SubtitleIndicator />
-        <SubtitleText>
-          2015 წელს კომპანიამ წარმატებით დანერგა სურსათის უვნებლობის სისტემა და
-          მოიპოვა საერთაშორისო აღიარებული სერტიფიკატები HACCP და ISO22000
-        </SubtitleText>
+        <SubtitleText>{t("subtitle text")}</SubtitleText>
       </SubtitleWrapper>
     </VideoBackgroundWrapper>
   );
 };
 
 export default VideoBackground;
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

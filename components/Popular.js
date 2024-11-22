@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 function Popular() {
+  const { t } = useTranslation("common");
+
   return (
     <div
       style={{
@@ -10,7 +13,7 @@ function Popular() {
         padding: "30px", // Add some padding for better spacing
       }}
     >
-      <h1 style={{ marginTop: "130px" }}>პოპულარული პროდუქცია</h1>
+      <h1 style={{ marginTop: "130px" }}>{t("popular products")}</h1>
 
       {/* Decorative Line */}
       <div
@@ -29,23 +32,23 @@ function Popular() {
         {[
           {
             src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
-            alt: "დელიკატესი",
-            title: "ძეხვი საქონლის",
+            alt: t("delicacy"),
+            title: t("beef sausage"),
           },
           {
             src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
-            alt: "მოხარშული",
-            title: "ძეხვი საექიმო",
+            alt: t("boiled"),
+            title: t("doctor sausage"),
           },
           {
             src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
-            alt: "სოსისი",
-            title: "ძეხვი სამოყვარულო",
+            alt: t("sausage"),
+            title: t("amateur sausage"),
           },
           {
             src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
-            alt: "სერველატი",
-            title: "ძეხვი პიკანტური",
+            alt: t("salami"),
+            title: t("spicy sausage"),
           },
         ].map((item, index) => (
           <div
@@ -80,3 +83,11 @@ function Popular() {
 }
 
 export default Popular;
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
