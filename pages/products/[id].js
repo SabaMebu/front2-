@@ -34,7 +34,9 @@ const ColWrapper = styled.div`
 const ImageWrapper = styled.div`
   img {
     width: 100%;
-    max-width: 170%;
+    height: 100%;
+    max-width: 100%; /* Ensure the image doesn't exceed the container */
+    object-fit: cover; /* Ensures the image maintains a consistent size */
     transition: transform 0.6s ease;
     cursor: pointer;
   }
@@ -54,14 +56,14 @@ const ImageWrapper = styled.div`
 
 const ThumbnailWrapper = styled.div`
   display: flex;
-  gap: 15px; /* Increased gap for better spacing */
+  gap: 10px; /* Reduced gap */
   margin-top: 20px;
   justify-content: center;
 
   img {
     cursor: pointer;
-    width: 100px; /* Increased width for larger thumbnails */
-    height: 100px; /* Increased height for larger thumbnails */
+    width: 80px; /* Adjusted thumbnail size */
+    height: 80px;
     object-fit: cover;
     transition: transform 0.3s, border 0.3s;
     border: 2px solid transparent;
@@ -81,12 +83,32 @@ const DescriptionWrapper = styled.div`
   max-width: 600px;
   margin: 0 auto;
 
+  h1 {
+    font-size: 18px; /* Reduced size for title */
+  }
+
+  p {
+    font-size: 14px; /* Reduced size for description */
+    line-height: 1.4;
+    margin-top: 10px;
+  }
+
   @media (max-width: 1024px) {
     max-width: 80%;
   }
 
   @media (max-width: 768px) {
     max-width: 90%;
+  }
+`;
+
+const TitleWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 24px; /* Adjusted title size */
+    margin-bottom: 10px;
   }
 `;
 
@@ -141,18 +163,16 @@ export default function ProductPage({ product }) {
             </ThumbnailWrapper>
 
             <DescriptionWrapper>
-              <p style={{ margin: "0", lineHeight: "1.6" }}>
-                <h1>
-                  {product[`description_${locale}`] || product.description_ge}
-                </h1>
-              </p>
+              <h1>
+                {product[`description_${locale}`] || product.description_ge}
+              </h1>
             </DescriptionWrapper>
           </WhiteBox>
 
           <div>
-            <Description style={{ fontSize: "30px", textAlign: "center" }}>
+            <TitleWrapper>
               <h1>{product[`title_${locale}`] || product.title_ge}</h1>
-            </Description>
+            </TitleWrapper>
 
             <hr
               style={{

@@ -58,6 +58,7 @@ export default function ProductBox({
   images,
   title_ge,
   title_en,
+  title_ru,
 }) {
   const url = "/products/" + _id;
   const { t } = useTranslation("common");
