@@ -28,7 +28,7 @@ function CarouselPage() {
             alt="First slide"
           />
         </Carousel.Item>
-        <Carousel.Item>
+        {/* <Carousel.Item>
           <IMAGE
             style={{
               width: "100%",
@@ -39,7 +39,7 @@ function CarouselPage() {
             src="https://miviuyvan.s3.amazonaws.com/1730790945211.jpg"
             alt="Second slide"
           />
-        </Carousel.Item>
+        </Carousel.Item> */}
         <Carousel.Item>
           <IMAGE
             style={{

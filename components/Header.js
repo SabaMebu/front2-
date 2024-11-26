@@ -192,7 +192,7 @@ export default function Header() {
             </Logo>
             {/* Language Switcher moved inside the Burger Menu */}
             <BurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
-              <span>"GE"</span>
+              <span></span>
               <span></span>
               <span></span>
             </BurgerMenu>
