@@ -16,7 +16,7 @@ function Card() {
         }}
       ></div>
       <div
-        style={{ marginTop: "65px", fontSize: "25px", marginBottom: "35px" }}
+        style={{ marginTop: "65px", fontSize: "22px", marginBottom: "35px" }}
       >
         <span>{t("product description")}</span>
       </div>

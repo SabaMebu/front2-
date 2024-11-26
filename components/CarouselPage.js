@@ -14,16 +14,14 @@ function CarouselPage() {
   }, []);
 
   return (
-    <div style={{ width: "100vw", overflow: "hidden", padding: "0 20px" }}>
+    <div style={{ width: "100vw", overflow: "hidden" }}>
       <Carousel>
         <Carousel.Item>
           <IMAGE
             style={{
-              width: "calc(100% - 96px)", // Subtract padding for both sides
-              margin: "0 auto", // Center the image
-              height: "auto", // Maintain aspect ratio
-              objectFit: "contain", // Fit the image within the space
-              borderRadius: "10px", // Optional: Add rounded corners
+              width: "100%", // Ensure full width of the viewport
+              height: "auto", // Let height adjust automatically to maintain aspect ratio
+              objectFit: "contain", // Scale image to fit within its container without being cropped
             }}
             className="d-block"
             src="https://miviuyvan.s3.amazonaws.com/1723725457188.jpeg"
@@ -33,11 +31,9 @@ function CarouselPage() {
         <Carousel.Item>
           <IMAGE
             style={{
-              width: "calc(100% - 96px)",
-              margin: "0 auto",
+              width: "100%",
               height: "auto",
               objectFit: "contain",
-              borderRadius: "10px",
             }}
             className="d-block"
             src="https://miviuyvan.s3.amazonaws.com/1730790945211.jpg"
@@ -47,11 +43,9 @@ function CarouselPage() {
         <Carousel.Item>
           <IMAGE
             style={{
-              width: "calc(100% - 96px)",
-              margin: "0 auto",
+              width: "100%",
               height: "auto",
               objectFit: "contain",
-              borderRadius: "10px",
             }}
             className="d-block"
             src="https://miviuyvan.s3.amazonaws.com/1723726449034.jpeg"
@@ -63,17 +57,15 @@ function CarouselPage() {
       <style jsx>{`
         @media (max-width: 768px) {
           img {
-            width: calc(100% - 30px); /* Smaller padding for smaller screens */
-            height: auto;
-            object-fit: contain;
+            width: 100%; /* Ensure the image always takes the full width */
+            height: auto; /* Auto height to keep the aspect ratio */
           }
         }
 
         @media (max-width: 576px) {
           img {
-            width: calc(100% - 20px);
+            width: 100%; /* Same behavior for smaller screens */
             height: auto;
-            object-fit: contain;
           }
         }
       `}</style>
