@@ -151,7 +151,7 @@ export default function Footer() {
     <>
       {/* SEO meta tags */}
       <Head>
-        <title>{t("footer_title")}</title>
+        {/* <title>{t("footer_title")}</title> */}
         <meta name="description" content={t("footer_description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
