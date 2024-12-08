@@ -19,6 +19,7 @@ const WhiteBox = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center; /* Centers content */
+  cursor: pointer;
 
   img {
     width: 100%; /* Ensures image fills container width */
@@ -60,21 +61,27 @@ export default function ProductBox({
   title_en,
   title_ru,
 }) {
+  const [currentImage, setCurrentImage] = useState(images[0]); // State to track the current image
   const url = "/products/" + _id;
   const { t } = useTranslation("common");
   const router = useRouter();
   const { locale } = router;
 
+  const handleImageClick = () => {
+    setCurrentImage(images[1] || images[0]); // Swap to second image, if available
+  };
+
   return (
     <ProductWrapper>
       <WhiteBox href={url}>
         <img
-          src={images[0]}
+          src={currentImage} // Use the current image (which changes on click)
           alt={title_en || title_ge} /* Use English or Georgian title as alt */
-          srcSet={`${images[0]} 1x, ${
-            images[1] || images[0]
+          srcSet={`${currentImage} 1x, ${
+            images[0] || images[1]
           } 2x`} /* Higher resolution image if available */
           sizes="(max-width: 768px) 100vw, 200px" /* Adjusts image size based on screen width */
+          onClick={handleImageClick} // Click to toggle the image
         />
       </WhiteBox>
       <TitleWrapper>
