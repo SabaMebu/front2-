@@ -188,7 +188,7 @@ export default function ProductPage({ product }) {
                   maxWidth: "37%",
                   marginTop: "18px",
                 }}
-                src="https://miviuyvan.s3.amazonaws.com/1725523038718.png"
+                src="https://miviuyvan.s3.amazonaws.com/1734585859497.jpg"
                 alt="Side Image"
               />
             </div>
