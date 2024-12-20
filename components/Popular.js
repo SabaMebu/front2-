@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
 function Popular() {
@@ -31,24 +32,28 @@ function Popular() {
         {/* Each product item */}
         {[
           {
-            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            src: "https://miviuyvan.s3.amazonaws.com/1734620759313.jpg",
             alt: t("delicacy"),
             title: t("beef sausage"),
+            link: "/products/676436634ef5b95fe935f1c0",
           },
           {
-            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            src: "https://miviuyvan.s3.amazonaws.com/1734620518361.jpg",
             alt: t("boiled"),
             title: t("doctor sausage"),
+            link: "/products/676435784ef5b95fe935f15a",
           },
           {
-            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            src: "https://miviuyvan.s3.amazonaws.com/1734620568824.jpg",
             alt: t("sausage"),
             title: t("amateur sausage"),
+            link: "/products/6764359e4ef5b95fe935f16b",
           },
           {
-            src: "https://miviuyvan.s3.amazonaws.com/1724919680002.png",
+            src: "https://miviuyvan.s3.amazonaws.com/1734620604058.jpg",
             alt: t("salami"),
             title: t("spicy sausage"),
+            link: "/products/676435cb4ef5b95fe935f17c",
           },
         ].map((item, index) => (
           <div
@@ -60,9 +65,18 @@ function Popular() {
               position: "relative", // For positioning the hover effect
             }}
           >
-            <div className="hover-effect" style={{ display: "inline-block" }}>
-              <Image src={item.src} alt={item.alt} width={250} height={250} />
-            </div>
+            <Link href={item.link}>
+              <div className="hover-effect" style={{ display: "inline-block" }}>
+                {/* Increase only the height */}
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={250} // Maintain the width to avoid distortion
+                  height={320} // Change the height to your desired value
+                  quality={100} // Set the quality to 100 for better resolution
+                />
+              </div>
+            </Link>
             <div style={{ color: "black", fontSize: "18px" }}>{item.title}</div>
           </div>
         ))}
