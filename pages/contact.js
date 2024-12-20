@@ -170,7 +170,7 @@ export default function ContactPage() {
             <p>{t("follow_us_social_media")}</p>
             <div>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/@onimaproducts"
                 target="_blank"
                 rel="noopener noreferrer"
               >
