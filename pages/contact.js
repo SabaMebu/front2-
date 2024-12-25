@@ -14,7 +14,7 @@ const TitleWrapper = styled.div`
   left: 49%;
   transform: translateX(-50%);
   margin: 18px 0 20px;
-  z-index: 10;
+  /* z-index ამოშლა */
 `;
 
 const Title = styled.h2`
@@ -119,6 +119,19 @@ const ContactInfo = styled.div`
   }
 `;
 
+const BurgerMenu = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000; /* უფრო მაღალი მნიშვნელობა */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export default function ContactPage() {
   const { t } = useTranslation("common"); // Hook to fetch translations
 
@@ -190,7 +203,7 @@ export default function ContactPage() {
                   src="https://miviuyvan.s3.amazonaws.com/1726662964405.png"
                   alt="Email"
                 />
-                <div className="contact-details">
+                <div class="contact-details">
                   <h4>{t("email")}</h4>
                   <p>info@onlma.ge</p>
                 </div>

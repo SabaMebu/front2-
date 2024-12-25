@@ -114,12 +114,6 @@ export default function AboutPage() {
               <LineText>{t("company_overview")}</LineText>
               <AdditionalText>{t("company_details")}</AdditionalText>
             </div>
-
-            <RightAlignedWrapper>
-              <RedLine />
-              <LineText>{t("quality_control")}</LineText>
-              <AdditionalText>{t("quality_control_details")}</AdditionalText>
-            </RightAlignedWrapper>
           </LineSection>
         </Center>
       </MainContent>
