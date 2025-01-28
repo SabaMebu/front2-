@@ -24,7 +24,7 @@ function CarouselPage() {
               objectFit: "contain", // Scale image to fit within its container without being cropped
             }}
             className="d-block"
-            src="https://miviuyvan.s3.amazonaws.com/1723725457188.jpeg"
+            src="https://miviuyvan.s3.amazonaws.com/1738081654675.jpg"
             alt="First slide"
           />
         </Carousel.Item>
@@ -36,7 +36,7 @@ function CarouselPage() {
               objectFit: "contain",
             }}
             className="d-block"
-            src="https://miviuyvan.s3.amazonaws.com/1730790945211.jpg"
+            src="https://miviuyvan.s3.amazonaws.com/1738081648918.jpg"
             alt="Second slide"
           />
         </Carousel.Item>
@@ -48,7 +48,7 @@ function CarouselPage() {
               objectFit: "contain",
             }}
             className="d-block"
-            src="https://miviuyvan.s3.amazonaws.com/1723726449034.jpeg"
+            src="https://miviuyvan.s3.amazonaws.com/1738081645314.jpg"
             alt="Third slide"
           />
         </Carousel.Item>

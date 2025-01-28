@@ -164,16 +164,16 @@ export default function ContactPage() {
         <LeftColumn>
           <ImageWrapper>
             <img
-              src="https://miviuyvan.s3.amazonaws.com/1730790446607.jpg"
+              src="https://miviuyvan.s3.amazonaws.com/1738082423801.jpg"
               alt={t("contact_image_alt")}
             />
           </ImageWrapper>
-          <Title>{t("about_us")}</Title>
+
           <ImageWrapper>
-            <img
+            {/* <img
               src="https://miviuyvan.s3.amazonaws.com/1726661385736.png"
               alt={t("contact_image_alt")}
-            />
+            /> */}
           </ImageWrapper>
         </LeftColumn>
 
@@ -232,7 +232,7 @@ export default function ContactPage() {
           </InfoBlock>
         </RightColumn>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

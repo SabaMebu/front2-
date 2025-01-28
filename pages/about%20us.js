@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Footer from "./footer";
 import { useTranslation } from "next-i18next";
 
-// Styled components (unchanged)
+// Styled components
 const Title = styled.h1`
   font-size: 2.8em;
   color: white;
@@ -85,6 +85,19 @@ const RightAlignedWrapper = styled.div`
   }
 `;
 
+const ImageWrapper = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+`;
+
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -95,7 +108,6 @@ const MainContent = styled.main`
   flex-grow: 1;
 `;
 
-// About Page Component
 export default function AboutPage() {
   const { t } = useTranslation("common");
 
@@ -115,9 +127,17 @@ export default function AboutPage() {
               <AdditionalText>{t("company_details")}</AdditionalText>
             </div>
           </LineSection>
+
+          {/* ახალი სექცია - სურათი */}
+          <ImageWrapper>
+            <img
+              src="https://miviuyvan.s3.amazonaws.com/1726661385736.png"
+              alt={t("image_alt_text")}
+            />
+          </ImageWrapper>
         </Center>
       </MainContent>
-      <Footer />
+      {/* <Footer /> */}
     </PageWrapper>
   );
 }

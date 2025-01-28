@@ -121,7 +121,7 @@ export default function CategoriesPage({ mainCategories, categoriesProducts }) {
           </CategoryWrapper>
         ))}
       </Center>
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   );
 }

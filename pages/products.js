@@ -88,7 +88,7 @@ export default function ProductsPage({ products, currentPage, totalPages }) {
           ))}
         </PaginationWrapper>
       </Center>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

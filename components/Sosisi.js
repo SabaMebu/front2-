@@ -41,7 +41,7 @@ function Sosisi() {
         }}
       >
         <img
-          src="https://miviuyvan.s3.amazonaws.com/1724926731122.jpg"
+          src="https://miviuyvan.s3.amazonaws.com/1738082155962.jpg"
           alt={t("sosisi")}
           style={{
             width: "100%", // Ensure image takes full width

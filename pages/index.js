@@ -20,7 +20,7 @@ export default function HomePage() {
       <Sosisi />
       <SosisiWithVideo />
       <Market />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

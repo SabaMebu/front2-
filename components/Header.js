@@ -212,7 +212,7 @@ export default function Header() {
                 </LanguageButton>
                 {isDropdownOpen && (
                   <LanguageDropdown>
-                    {["ge", "en", "ru"].map((lng) => (
+                    {["ge", "ru"].map((lng) => (
                       <DropdownLanguageButton
                         key={lng}
                         onClick={() => changeLanguage(lng)}
